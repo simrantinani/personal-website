@@ -21,12 +21,6 @@ A collection of notes structured notes, technical explanations of concepts, and 
 
 A record of my academic work, including research in mathematical cryptography during my doctoral studies.
 
-
-### [Resume](/cv/)
-
-An outline of my academic and professional background.
-
-
 ### [About](/about/)
 
 A bit more about me and this website.
