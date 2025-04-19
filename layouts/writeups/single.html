@@ -1,0 +1,73 @@
+
+{{ define "main" }}
+<main id="main" class="container mx-auto px-4">
+
+  {{ if eq .Section "posts" }}
+    <div class="post-heading">
+      <h1 class="post-title">{{ .Title }}</h1>
+      <div class="publish-metadata">
+        {{ .PublishDate.Format .Site.Params.dateFormat }}
+        {{ if .Site.Params.showWordCount }}
+          &nbsp; <span>{{ .WordCount }} words</span>
+        {{ end }}
+        {{ if .Site.Params.showReadingTime }}
+          &nbsp; <span>~{{ .ReadingTime }} {{ if gt .ReadingTime 1 }}mins{{ else }}min{{ end }}</span>
+        {{ end }}
+      </div>
+    </div>
+
+    {{ if .Params.tags }}
+    <div class="tags">
+      {{ range .Params.tags }}
+        <a class="link tag" href='{{ "tags" | absURL }}/{{ . | urlize }}'>#{{ . }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{ if cond (ne .Params.toc nil) .Params.toc .Site.Params.toc }}
+    {{ if ne .TableOfContents "<nav id=\"TableOfContents\"></nav>" }}
+    <details>
+      <summary><b>Table of Contents</b></summary>
+      <div class="toc {{ if .Site.Params.numberedSubtitles }}numbered-subtitles{{ end }}">
+        {{ .TableOfContents }}
+      </div>
+    </details>
+    {{ end }}
+    {{ end }}
+
+    <article class="content {{ if and (.Site.Params.numberedSubtitles) (not .Params.noNumbering) }}numbered-subtitles{{ end }}">
+      {{ .Content }}
+    </article>
+
+  {{ else }}
+  <article class="content {{ if and (.Site.Params.numberedSubtitles) (not .Params.noNumbering) }}numbered-subtitles{{ end }}">
+    {{ .Content }}
+    </article>
+  {{ end }}
+
+ <!-- {{/* <button onclick="topFunction()" id="back-to-top" title="Go to top">Back to Top</button> */}}-->
+
+  {{ partial "sharingbuttons.html" . }}
+
+  <div class="paginator">
+    {{ with .PrevInSection }}
+      <a class="link" href="{{ .Permalink }}">← prev</a>
+    {{ else }}
+      <a></a>
+    {{ end }}
+    {{ with .NextInSection }}
+      <a class="link" href="{{ .Permalink }}">next →</a>
+    {{ else }}
+      <a></a>
+    {{ end }}
+  </div>
+
+  {{ if .Page.Store.Get "hasMermaid" }}
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+  {{ end }}
+
+</main>
+{{ end }}

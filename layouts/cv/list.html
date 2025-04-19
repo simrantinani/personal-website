@@ -1,0 +1,61 @@
+{{ define "main" }}
+
+<style>
+  nav,
+  header,
+  .site-header,
+  .topbar,
+  .navbar,
+  .navbar-container,
+  .nav-left,
+  .nav-right,
+  .nav-center,
+  .signature,
+  .category-scroll-nav,
+  hr,
+  .author,
+  .author-name,
+  .page-header,
+  .site-footer {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  body {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+</style>
+
+<main class="cv-grid">
+
+  <!-- ✅ ONE SINGLE <aside> THAT ALWAYS EXISTS -->
+  <aside class="cv-sidebar">
+    <div class="cv-name">
+      <img src="/images/cvpic.jpeg" alt="Simran Tinani" class="profile-picture" />
+      <h1>Simran Tinani</h1>
+      <p> Cybersecurity, Cryptography, Mathematics </p>
+    </div>
+
+    <!-- ✅ Unified sidebar: handles both screen & print -->
+    {{ partial "cv-sidebar.html" . }}
+  </aside>
+
+  <!-- Main Content -->
+  <section class="cv-main">
+    {{ .Content }}
+    {{ partial "cv-experience.html" . }}
+    {{ partial "cv-education.html" . }}
+    {{ partial "cv-achievements.html" . }}
+    {{ partial "cv-skills.html" . }}
+    {{ partial "cv-publications.html" . }}
+    {{ partial "cv-talks.html" . }}
+  </section>
+
+</main>
+
+{{ end }}

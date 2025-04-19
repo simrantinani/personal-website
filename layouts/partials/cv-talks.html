@@ -1,0 +1,11 @@
+<section class="cv-section cv-talks">
+  <h2 class="cv-edu-title"> Selected Talks</h2>
+  <ul>
+    {{ range site.Data.cv.talks }}
+      <li class="cv-l3">
+        <strong>{{ .title }}</strong><br>
+        {{ .event }} — <em>{{ .location }}</em> ({{ .date }})
+      </li>
+    {{ end }}
+  </ul>
+</section>

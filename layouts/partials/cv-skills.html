@@ -1,0 +1,13 @@
+<section class="cv-section cv-skills">
+  <h2 class="cv-edu-title">Programming and Tools</h2>
+
+  <div class="cv-l3">{{ site.Data.cv.skills.summary }}</div>
+
+  <ul>
+    {{ range site.Data.cv.skills.skills }}
+      <li class="cv-l3">
+        <strong>{{ .name }}</strong>{{ with .description }}: {{ . }}{{ end }}
+      </li>
+    {{ end }}
+  </ul>
+</section>

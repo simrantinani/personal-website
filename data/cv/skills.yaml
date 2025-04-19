@@ -1,0 +1,29 @@
+
+skills:
+  - name: "Python"
+    description: "Several years of experience: machine learning, computer vision, cryptographic utilities, backend systems development"
+
+  - name: "SageMath"
+    description: "Conducting experiments and verifying theoretical results in cryptography research"
+
+  - name: "BurpSuite"
+    description: "Basic proficiency"
+
+  - name: "nmap, sslyze"
+    description: "Basic proficiency"
+
+  - name: "Shell Scripting"
+    description: "Basic proficiency"
+
+  - name: "R"
+    description: "Intermediate proficiency. Data analysis, forecasting, visualization, machine learning algorithms"
+
+  - name: "LaTeX, Office (Excel, Word, PowerPoint)"
+    description: "Scientific documentation, writing papers, and preparing presentations"
+
+
+  - name: "Hugo"
+    description: "Static site generator for building personal website and resume."
+
+  - name: "HTML, CSS"
+    description: "Working proficiency. Used in building static site with Hugo."

@@ -1,0 +1,57 @@
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+{{ $options := dict "targetPath" "css/research.css" "enableSourceMap" true }}
+
+{{/* List pages (sections like /blog/, /research/) */}}
+{{ if eq .Kind "section" }}
+  {{ $listOpts := dict "transpiler" "dartsass" "targetPath" "css/list.css" }}
+  {{ with resources.Get "sass/layouts/list.scss" | toCSS $listOpts | postCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+  {{ end }}
+{{ end }}
+
+{{/* Single pages (individual posts, papers, etc.) */}}
+{{ if eq .Kind "page" }}
+  {{ $singleOpts := dict "transpiler" "dartsass" "targetPath" "css/single.css" }}
+  {{ with resources.Get "sass/layouts/single.scss" | toCSS $singleOpts | postCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+  {{ end }}
+{{ end }}
+
+{{/* Homepage (index.html) */}}
+{{ if .IsHome }}
+  {{ $indexOpts := dict "transpiler" "dartsass" "targetPath" "css/index.css" }}
+  {{ with resources.Get "sass/layouts/index.scss" | toCSS $indexOpts | postCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+  {{ end }}
+{{ end }}
+
+<!-- common styles -->
+{{ $commonOpts := dict "transpiler" "dartsass" "targetPath" "css/common.css" }}
+{{ with resources.Get "sass/layouts/common.scss" | toCSS $commonOpts | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+
+<!-- content styles -->
+{{ $contentOpts := dict "transpiler" "dartsass" "targetPath" "css/content.css" }}
+{{ with resources.Get "sass/layouts/content.scss" | toCSS $contentOpts | postCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+
+<!-- global custom styles -->
+{{ $customOpts := dict "transpiler" "dartsass" "targetPath" "css/custom.css" }}
+{{ with resources.Get "sass/main.scss" | toCSS $customOpts | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+{{ end }}
+
+{{ if and (eq .Section "research") (eq .Kind "section") }}
+  {{ $researchOpts := dict "transpiler" "dartsass" "targetPath" "css/research.css" }}
+  {{ with resources.Get "sass/layouts/research.scss" | toCSS $researchOpts | postCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+  {{ end }}
+{{ end }}
+
+

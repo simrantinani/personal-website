@@ -1,0 +1,31 @@
+- title: "Cryptanalysis of a System Based on Twisted Dihedral Group Algebras"
+  authors: "Simran Tinani"
+  venue: "Transactions on Mathematical Cryptology (TMC)"
+  year: 2022
+  url: "https://eprint.iacr.org/2024/316"  # Replace with journal link if available
+
+- title: "A Deterministic Algorithm for the Discrete Logarithm Problem in a Semigroup"
+  authors: "Simran Tinani, Joachim Rosenthal"
+  venue: "Journal of Mathematical Cryptology, vol. 16, no. 1, pp. 141–155"
+  year: 2022
+  url: "https://doi.org/10.1515/jmc-2020-0074"
+  
+- title: "Complexity of Conjugacy Search in Some Polycyclic and Matrix Groups"
+  authors: "Simran Tinani, Carlo Matteotti, Joachim Rosenthal"
+  venue: "arXiv preprint"
+  year: 2022
+  url: "https://arxiv.org/abs/2202.11062"
+
+- title: "A Number Theoretic Approach to Cycles in LDPC Codes"
+  authors: "Julia Lieb, Simran Tinani"
+  venue: "IFAC-PapersOnLine, Proceedings of 25th International Symposium on Mathematical Theory of Network Systems (MTNS)"
+  year: 2022
+  url: "https://www.sciencedirect.com/science/article/pii/S2405896322020296"
+
+
+
+- title: "Existence and Cardinality of k-Normal Elements in Finite Fields"
+  authors: "Simran Tinani, Joachim Rosenthal"
+  venue: "Theoretical Computer Science and General Issues, Springer International Publishing"
+  year: 2021
+  url: "https://link.springer.com/chapter/10.1007/978-3-030-90890-2_1"

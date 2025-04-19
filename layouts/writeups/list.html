@@ -1,0 +1,91 @@
+{{ define "main" }}
+<main id="main" class="{{ .Section }}">
+  <div class="publications-page">
+    {{ $categoryOrder := slice
+      "Systems, Applications, Security"
+      "Cryptography"
+      "AI and Machine Learning"
+      "Theoretical Computer Science"
+      "Mathematics"
+    }}
+
+    <!-- Icon map: match via urlized keys -->
+    {{ $iconMap := dict
+      "ai-and-machine-learning" "fas fa-microchip"
+      "cryptography" "fas fa-lock"
+      "mathematics" "fas fa-square-root-alt"
+      "systems-applications-security" "dual"
+      "theoretical-computer-science" "fas fa-project-diagram"
+    }}
+
+    <!-- Category Scroll Nav using $categoryOrder -->
+    <nav class="category-scroll-nav" id="categoryNav">
+      {{ range $categoryOrder }}
+        {{ $catKey := . | urlize }}
+        <a href="#{{ $catKey }}">
+          {{ if eq (index $iconMap $catKey) "dual" }}
+            <i class="fas fa-desktop nav-icon"></i>
+            <i class="fas fa-shield-alt nav-icon"></i>
+          {{ else }}
+            <i class="{{ index $iconMap $catKey | default "fas fa-tag" }} nav-icon"></i>
+          {{ end }}
+          {{ . }}
+        </a>
+      {{ end }}
+    </nav>
+
+    <!-- Collect & sort categories -->
+    {{ $allPosts := .Pages }}
+    {{ $categorySet := slice }}
+    {{ range $allPosts }}
+      {{ range .Params.categories }}
+        {{ $categorySet = $categorySet | append . }}
+      {{ end }}
+    {{ end }}
+    {{ $uniqueCategories := $categorySet | uniq | sort }}
+
+    <!-- Render section for each category -->
+    {{ range $categoryOrder }}
+      {{ $currentCat := . }}
+      {{ $catKey := $currentCat | urlize }}
+
+      <section class="pub-section-card">
+        <h2 id="{{ $catKey }}" class="pub-section-title">
+          {{ if eq (index $iconMap $catKey) "dual" }}
+            <i class="fas fa-desktop pub-type-icon"></i>
+            <i class="fas fa-shield-alt pub-type-icon"></i>
+          {{ else }}
+            <i class="{{ index $iconMap $catKey | default "fas fa-tag" }} pub-type-icon"></i>
+          {{ end }}
+          {{ $currentCat }}
+        </h2>
+
+        <div class="pub-section">
+          {{ range $allPosts }}
+            {{ if in .Params.categories $currentCat }}
+              {{ partial "blog-entry.html" . }}
+            {{ end }}
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+    <script>
+      // Remove focus from clicked category links to prevent styling retention
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".category-scroll-nav a");
+    
+        navLinks.forEach(link => {
+          link.addEventListener("click", function () {
+            // Allow hash to apply, then blur
+            setTimeout(() => this.blur(), 100);
+          });
+        });
+      });
+    </script>
+    
+  </div>
+</main>
+
+
+
+{{ end }}

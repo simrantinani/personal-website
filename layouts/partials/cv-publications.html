@@ -1,0 +1,22 @@
+<section class="cv-section cv-publications">
+  <h2 class="cv-edu-title">
+    Selected Publications
+    <span style="font-weight: normal; font-size: 0.8em; margin-left: 1em;">
+      <a href="https://simrantinani.com/publications" target="_blank"
+         style="color: #1a3c6b; text-decoration: underline; text-underline-offset: 2px;">
+        (full list with links)
+      </a>
+    </span>
+  </h2>
+
+  <ul>
+    {{ range site.Data.cv.publications }}
+      <li class="cv-l3">
+        <strong>{{ .title }}</strong><br>
+        {{ .authors }}
+        {{ with .venue }} — <em>{{ . }}</em>{{ end }}
+        {{ with .year }}, {{ . }}{{ end }}
+      </li>
+    {{ end }}
+  </ul>
+</section>

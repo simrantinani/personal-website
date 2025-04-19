@@ -1,0 +1,180 @@
+// Optional: import theme variables FIRST so you can override
+@import "vars";
+@import "fonts";
+@import "syntax";
+@import "gruvbox";
+
+// Your overrides here
+:root {
+  --bg: #fff4e3 !important;
+}
+
+body {
+  background-color: var(--bg);
+}
+
+@import "layouts/home";  
+
+
+
+/* ===== NAVIGATION BAR ===== */
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
+  padding: 0 0 0.95rem;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Georgia", serif !important;
+}
+
+.signature {
+  font-size: 0.85rem;
+  color: #5e5e5e;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.25rem;
+  padding-top: -0.25rem;
+  margin-top: -1rem;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.08);
+  text-transform: none;
+  text-align: right;
+  width: 100%;
+  font-family: 'Lora';
+  font-style: italic;
+}
+
+.navbar {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Lora', serif;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  font-family: "Georgia", serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.nav-left {
+  justify-content: flex-end;
+}
+
+.nav-right {
+  justify-content: flex-start;
+}
+
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Georgia", serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0 1rem;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.navbar a,
+.navbar span {
+  display: inline-block;
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 1.35rem;
+  font-family: 'Lora', serif;
+  font-weight: 550;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.navbar a:hover {
+  color: #000;
+}
+
+.active span {
+  position: relative;
+  color: #000000;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 1.6px;
+    width: 100%;
+    background: #000000;
+  }
+}
+
+/* ===== HEADER RULE ===== */
+h2 {
+  font-size: clamp(1.4rem, 1.75vw, 2rem);
+  font-weight: 520;
+  letter-spacing: -0.25px;
+  font-family: "Georgia", serif;
+}
+
+/* ===== CATEGORY SCROLL NAV ===== */
+.category-scroll-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  margin: 0 auto 1.5rem auto;
+  background-color: #f8f5f0;
+  border: 1px solid #e4e0db;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  max-width: 1000px;
+}
+
+.category-scroll-nav a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.55rem;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+.category-scroll-nav a.active {
+  background-color: #e8dce2;
+  color: #5e2a52;
+  font-weight: 600;
+}
+
+.category-scroll-nav a .emoji {
+  font-size: 0.85rem;
+  margin-right: 0.25rem;
+  opacity: 0.75;
+}
+
+
+
+
+/* ===== IMPORT CLEAN BLOG STYLES ===== */
+@import "layouts/blog";
+@import "layouts/cv";
+@import "layouts/about";

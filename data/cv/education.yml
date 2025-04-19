@@ -1,0 +1,20 @@
+- degree: DAS in Cybersecurity
+  school: ETH Zürich
+  period: "Jan’24 – Present"
+  details:
+    - "Two-year long continuing education degree, pursued with 20% load"
+    - "Selected courses: Network Security, System Security, Formal Methods in Information Security"
+    - "Selected projects: Programming the infrastructure (client, server) for automated certificate procurement with ACME (Let's Encrypt); Formal security analysis and proofs of the OTR and PACE protocols using Tamarin Prover."
+
+- degree: PhD in Mathematics
+  school: University of Zürich
+  period: "Sep’19 – Jun’23"
+  details:
+    - "Thesis: *A Study of Algebraic Methods in Asymmetric Cryptography* <u>[(link)](/pdf/phd-thesis.pdf)</u>. Successfully defended on 9 June 202.3"
+    - "Advisor: Prof. Joachim Rosenthal"
+
+- degree: BS-MS Dual Degree in Mathematics
+  school: IISER Mohali
+  period: "Aug’13 – May’18"
+  details:
+    - "Cumulative Index: 9.8/10 *Summa Cum Laude*. Master’s Thesis: *A Study of Quadratic Number Fields* <u>[(link)](/pdf/ms-thesis.pdf)</u>"

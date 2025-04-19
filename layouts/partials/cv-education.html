@@ -1,0 +1,15 @@
+<section class="cv-section cv-education">
+  <h2 class="cv-edu-title"> Education</h2>
+  {{ range site.Data.cv.education }}
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <div class="cv-l1">{{ .degree }}</div>
+        <div class="cv-date">{{ .period }}</div>
+      </div>
+      <div class="cv-l2">{{ .school }}</div>
+      {{ range .details }}
+        <div class="cv-l3">{{ . | markdownify }}</div>
+      {{ end }}
+    </div>
+  {{ end }}
+</section>

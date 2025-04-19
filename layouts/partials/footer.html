@@ -1,0 +1,36 @@
+<footer id="footer">
+  <div>
+    <span>{{ .Site.Params.footnote | safeHTML }}</span>
+  </div>
+  <div>
+    <span>Copyright © {{ now.Format "2006"}} Simran Tinani </span>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const sections = document.querySelectorAll("h2[id]");
+      const navLinks = document.querySelectorAll(".category-scroll-nav a");
+    
+      function activateLink() {
+        let scrollY = window.scrollY + 100;
+    
+        sections.forEach(section => {
+          const id = section.getAttribute("id");
+          const top = section.offsetTop;
+    
+          if (scrollY >= top) {
+            navLinks.forEach(link => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      }
+    
+      window.addEventListener("scroll", activateLink);
+    });
+    </script>
+    
+</footer>

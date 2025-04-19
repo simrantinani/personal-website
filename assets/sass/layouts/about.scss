@@ -1,0 +1,65 @@
+.about-section-card {
+  max-width: 1280px;
+  margin: 2rem auto;
+  padding: 1.5rem 1.5rem 1rem;
+  background: linear-gradient(to bottom, #fefafc, #fff);
+  background-color: rgba(177, 98, 134, 0.06);
+  border-left: 4px solid rgba(177, 98, 134, 0.25);
+  border-radius: 18px 18px 12px 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+}
+
+.about-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #2b2b2b;
+  font-family: "Lora", serif;
+}
+
+
+.about-content ul {
+  list-style: none;
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.about-content ul li {
+  position: relative;
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+  font-size: 0.96rem;
+}
+
+.about-content ul li::before {
+  content: "➝"; /* Unicode arrow → */
+  position: absolute;
+  left: 0;
+  color: #8c4d67; /* or a more muted gray if you prefer */
+  font-weight: bold;
+}
+
+
+.about-content ul li a {
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+  color: inherit;
+}
+
+.about-content ul li a:hover {
+  color: #b16286 !important; /* or any muted color that fits your palette */
+}
+
+.about-content p {
+  margin-bottom: 1.1rem;
+  line-height: 1.7;
+}
+.about-content a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: inherit;
+}
+
+.about-content a:hover {
+  color: #b16286;
+}
+

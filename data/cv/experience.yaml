@@ -1,0 +1,34 @@
+- role: "IT Security Analyst"
+  company: "cnlab security AG"
+  period: "Sep’23 – Present"
+  highlights:
+    - Design, planning, coordination, documentation of security reviews
+    - "Conceptual and practical aspects of security protocols and cryptographic primitives integrated in IT systems"
+    - "Research on post-quantum cryptography, standardization, implementation efforts; authored a comprehensive guide (<u>[to be published soon](https://www.cnlab.ch/)</u>)"
+    - Analysis of web applications— architectural soundness, data flow, authentication and authorization mechanisms
+    - "Source-code level security audits of smart contracts"
+    - Configuration analysis of configurations of infrastructure components including web servers, reverse proxies, and application firewalls
+    - Analysis of vulnerabilities in accordance with CVE's, CVSS
+    - "Application of standards and regulations: RFC’s, NIST, BSI, PCI-DSS"
+    - "Development of an internal AI strategy concept; demo on basics of LLM prompting at the cnlab 2024 annual conference (<u>[link](https://www.cnlab.ch/fileadmin/documents/Publikationen/2024/cnlab_KI-und-Sicherheit_Prompting_web.pdf)</u>)"
+
+- role: "PhD Student and Teaching Assistant"
+  company: "University of Zürich"
+  period: "Sep’19 – Aug'23"
+  highlights:
+    - "Authored nine research papers, delivered five research talks, served as reviewer, participated in multiple research conferences."
+    - "Collaborated with cryptography department of VBS and Cyber Defence Campus for research."
+
+- role: "Coordinator, Cybersecurity Community"
+  company: "Digital Society Initiative"
+  period: "Jan’22 – Aug'23"
+  highlights:
+    - "Organised and coordinated events and activities, managed member database and website."
+
+- role: "Data Scientist"
+  company: "Hashbrown Systems, India"
+  period: "Aug’18 – Jun’19"
+  highlights:
+    - "Developed a deep learning object detection and tracking model for counting vehicles in a live video feed (<u>[White Paper](https://hashbrown.com/blog/ooh/vehicular-counting-using-object-detection-and-object-tracking)</u>)"
+    - "Developed a model for estimation of advertisement views based on demographic distribution, recalibratable with real data."
+    - "Analyzed stock price trends and developed automated trading models."

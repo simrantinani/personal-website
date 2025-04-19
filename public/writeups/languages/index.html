@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 105%">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <meta name="author" content="">
+
+  
+  
+  <meta name="description" content="A breakdown of the hierarchy of programming languages, and of the roles of source code, bytecode, assembly, object files, and executables.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313//images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313//images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313//images/favicon-16x16.png">
+
+  
+  
+  <meta name="keywords" content='hugo latex theme blog texify texify2 texify3 michael neuper'>
+  
+
+  
+  
+  <link rel="stylesheet" href='/katex/katex.min.css'>
+<script defer defer src='/katex/katex.min.js'></script>
+<script defer src='/katex/contrib/auto-render.min.js'></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+  
+
+
+
+  
+  <meta property="og:url" content="http://localhost:1313/writeups/languages/">
+  <meta property="og:site_name" content="Simran Tinani">
+  <meta property="og:title" content="Understanding the Hierarchy of Computer Languages">
+  <meta property="og:description" content="A breakdown of the hierarchy of programming languages, and of the roles of source code, bytecode, assembly, object files, and executables.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writeups">
+    <meta property="article:published_time" content="2023-02-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-02-01T00:00:00+00:00">
+
+
+  
+  <link rel="canonical" href="http://localhost:1313/writeups/languages/">
+
+  
+  
+  
+  <meta itemprop="name" content="Understanding the Hierarchy of Computer Languages">
+  <meta itemprop="description" content="A breakdown of the hierarchy of programming languages, and of the roles of source code, bytecode, assembly, object files, and executables.">
+  <meta itemprop="datePublished" content="2023-02-01T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2023-02-01T00:00:00+00:00">
+  <meta itemprop="wordCount" content="3662">
+  <meta itemprop="keywords" content="Systems, Applications, Security">
+
+  
+  
+  <title>Understanding the Hierarchy of Computer Languages - </title>
+  
+
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Understanding the Hierarchy of Computer Languages">
+  <meta name="twitter:description" content="A breakdown of the hierarchy of programming languages, and of the roles of source code, bytecode, assembly, object files, and executables.">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dRgZyrTq+zMJq6dfypZ7V+1RWgZ5BkMiDwIXJ1PV4AmxzyozpmXT3RBizJFlMKX8Nfq1f1F5hOgFlAxu9kw6Yg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="stylesheet" href="/css/single.min.a70322a61e6d0900242309fe907aa7c6d09de1af6d54a5203810f320fc65aa58.css" integrity="sha256-pwMiph5tCQAkIwn&#43;kHqnxtCd4a9tVKUgOBDzIPxlqlg=" crossorigin="anonymous">
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/css/common.min.cb988adfe659afb27f8185d06a1772ca1405f376e32f54ecb8cd63a2ca8b2552.css" integrity="sha256-y5iK3&#43;ZZr7J/gYXQahdyyhQF83bjL1TsuM1josqLJVI=" crossorigin="anonymous">
+
+
+
+
+
+  <link rel="stylesheet" href="/css/content.min.ba38eba94cb47fef9936258c42d11ff19fa9686a30b38e783773fe3f15eb44dc.css" integrity="sha256-ujjrqUy0f&#43;&#43;ZNiWMQtEf8Z&#43;paGows454N3P&#43;PxXrRNw=" crossorigin="anonymous">
+
+
+
+
+
+  <link rel="stylesheet" href="/css/custom.min.738f829e2e787ce7bdfe28053c21461ac08b70909965e55b2af0572277fef033.css" integrity="sha256-c4&#43;Cni54fOe9/igFPCFGGsCLcJCZZeVbKvBXInf&#43;8DM=" crossorigin="anonymous">
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <header class="navbar-container">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="..." crossorigin="anonymous">
+
+  <div class="signature">Simran Tinani</div>
+
+  
+  
+  
+
+  
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+  
+    
+    <nav class="navbar">
+      <div class="nav-left">
+        
+          <a href="/">Home</a>
+        
+          <a href="/about/">About</a>
+        
+          <a href="/writeups/">Writeups</a>
+        
+          <a href="/research/">Research</a>
+        
+          <a href="https://github.com/simrantinani">GitHub</a>
+        
+      </div>
+      <div class="nav-center inactive"><span>&nbsp;</span></div>
+      <div class="nav-right"></div>
+    </nav>
+  
+</header>
+
+    
+<main id="main" class="container mx-auto px-4">
+
+  
+  <article class="content ">
+    <p>How do we, as humans, communicate our intent to a machine that only understands binary? The answer lies in programming languages—the translators between human logic and machine execution. Programming languages exist in various levels, each serving specific purposes, from high-level human-readable code to the raw binary instructions a computer executes. This artice explores these levels and how they work together to bridge the gap between us and our computers.</p>
+<h2 id="levels-of-programming-languages"><strong>Levels of Programming Languages</strong></h2>
+<p>The <strong>levels of programming languages</strong> represent a hierarchy of abstraction that bridges the gap between human thinking and machine execution. Each level corresponds to a specific degree of abstraction and functionality, from high-level languages that prioritize human readability to low-level languages that directly interact with hardware. While high-level languages are abstract and focus on human readability and problem-solving, low-level languages represent instructions closer to the form in which they are to be instructed by the machine.</p>
+<h3 id="level-1-machine-code"><strong>Level 1: Machine Code</strong></h3>
+<p>At the lowest level of programming lies <strong>machine code</strong>, the fundamental language of binary instructions (1s and 0s) that the CPU directly executes. These instructions dictate the operations performed by the processor, including arithmetic calculations, memory access, and hardware control. Machine code is the foundation upon which all other levels of programming languages are built, translating human logic into precise commands for the hardware.</p>
+<p>Machine code is stored as sequences of binary digits, such as <code>10101000 00101100</code>, representing operations and data. Each instruction is tied to the specific architecture of the processor, such as x86 or ARM, and machine code written for one type of processor cannot run on another. This architecture-specific nature allows machine code to interact with hardware at an incredibly granular level, enabling maximum performance and efficiency. However, this also makes it challenging to write or read, as it provides no abstractions or human-readable features.</p>
+<p>Machine code is indispensable in some fields. Firmware development, which requires precise control over hardware initialization, relies heavily on machine code. Embedded systems, where performance and resource constraints are critical, often involve direct interaction with machine code. Reverse engineering and security analysis frequently require manipulating machine code.</p>
+<p>Machine code is rarely written by humans directly. Instead, compilers and assemblers generate it from higher-level languages like C or Python. For example, the C statement <code>int x = 10;</code> might ultimately be translated into machine instructions that move the value <code>10</code> into a specific memory address.</p>
+<p>When an executable file is run, the CPU follows the <strong>fetch-decode-execute</strong> cycle. It first r<strong>eads the file header</strong>, to determine the file format, entry point, and memory layout. <strong>Then, it loads the Code and Data</strong> to Maps the machine code and other components into the computer’s memory. Then, it <strong>links dependencies</strong>, resolving references to external libraries or resources. Finally, it s<strong>tarts Executio</strong>n, directing the CPU to begin executing the machine code at the specified entry point. This seamless process allows complex programs to run effortlessly on modern systems.</p>
+<h4 id="executable-files-and-raw-binary-files"><strong><strong>Executable Files and Raw Binary Files</strong></strong></h4>
+<p>While machine code lies at the heart of all computer programs, it rarely exists in isolation. Instead, it is encapsulated within files that make it manageable for the operating system and the user. Two primary forms of machine code storage are <strong>executable files</strong> (<strong><code>.exe</code></strong> on Windows, <strong><code>.out</code></strong> on Linux) or <code>.out</code> (<strong><code>.o</code> or <code>.obj</code></strong>), and <strong>raw binary files</strong>.</p>
+<p><strong>Raw binary files</strong> are the simplest representation of machine code, containing only the essential binary instructions that the CPU needs to execute a program. Unlike executable files, raw binaries lack <strong>metadata</strong>—supplementary information that helps an operating system understand how to handle and execute a file, providing contextual information, such as the program’s entry point, memory layout, and dependencies, making the file usable and portable within an OS environment.</p>
+<p>An <strong>executable file</strong> is a program file that contains the <strong>raw binary machine code</strong> combined with <strong>metadata</strong> required for the operating system to load and run the program. Metadata comprises</p>
+<ul>
+<li><strong>File Headers</strong>: Define the file type and format (e.g., ELF for Linux, PE for Windows).</li>
+<li><strong>Entry Point</strong>: Indicates where execution begins in the file.</li>
+<li><strong>Sections</strong>: Organize the program into code, data, and other components.</li>
+<li><strong>Library References</strong>: Point to external libraries or dependencies.</li>
+</ul>
+<p>Executables are the most common way programs are distributed and executed on modern operating systems. The combination of raw machine code and metadata ensures the program can be executed seamlessly on a given operating system without manual setup or intervention.</p>
+<p>Turning a raw binary file into an executable involves <strong>adding metadata</strong> that the operating system requires. This process includes defining the program’s entry point (where execution begins), organizing the binary into sections like <code>.text</code> (code) and <code>.data</code> (variables), and using a tool like a <strong>linker</strong> to wrap the raw binary in the correct format. On Linux, the <strong>ld</strong> library is a linker that can create an executable file with the ELF format, starting with a .bin binary file. The reverse process involves <strong>stripping away the metadata</strong> to isolate the machine instructions. Tools like <strong><code>objcopy</code></strong> allow the extraction of the <code>.text</code> section of an executable to produce a raw binary file containing only the CPU instructions.</p>
+<h5 id="sections-in-executable-and-binary-files"><strong>Sections in Executable and Binary Files</strong></h5>
+<p><strong>Sections</strong> are a critical part of program files, especially in formats like <strong>ELF (Executable and Linkable Format)</strong> for Unix-based systems or <strong>PE (Portable Executable)</strong> for Windows. These sections organize code, data, and metadata in a structured way, making it easier for the operating system to load and manage the program. Both <strong>executables</strong> and <strong>raw binary files</strong> contain machine instructions, but executables include additional sections that provide metadata, context, and structure.</p>
+<p>Executables are organized into distinct sections, each serving a specific role in ensuring the smooth execution of a program. At their core lies the <code>.text</code> section, which contains the binary instructions (machine code) that the CPU executes. Surrounding it are additional sections that provide supporting data, metadata, or functionality, enabling the program to interact seamlessly with the operating system and external libraries.</p>
+<ol>
+<li>.<strong>text Section</strong>: Contains the program’s <strong>machine code</strong>—the binary instructions that the CPU executes. It is found in both <strong>raw binary files</strong> and executables. However, in executables, it is explicitly marked as the <code>.text</code> section and managed by headers. This section is <strong>read-only</strong> (instructions cannot be modified during execution), and <strong>executable</strong>. For example, a compiled C program’s instructions (e.g., arithmetic operations or function calls) are stored here.</li>
+<li>.<strong>data Section</strong>: Stores <strong>initialized global and static variables</strong>. These are variables defined with specific values before the program starts execution. This section is r<strong>eadable and writable</strong>, allowing modification of variables during runtime. <strong>Example</strong>: <code>int x = 10;</code> is stored in <code>.data</code>.</li>
+<li><strong><code>.bss</code> Section</strong>: Holds <strong>uninitialized global and static variables</strong>. These variables are zeroed out by the operating system or loader before execution. This section is re<strong>adable and writable</strong>: similar to <code>.data</code>, but initialized to zero by default. For e<strong>xample</strong>: <code>int y;</code> is allocated in <code>.bss</code>.</li>
+<li><strong>.<code>rodata</code> (Read-Only Data) Section</strong>: contains <strong>constants</strong> and <strong>string literals</strong> used in the program. This section is r<strong>ead-only</strong>. This prevents accidental or malicious modification of constant data. For <strong>example</strong>, the string <code>&quot;Hello, World!&quot;</code> in a program is stored here.</li>
+<li><strong>Metadata Sections</strong> like <strong>headers</strong>, provide critical information about the file’s structure and behavior. These sections do not contain executable code but are essential for the operating system to load and execute the program correctly. For example, the ELF Header (Linux) specifies architecture, file type, and entry point, thus where to find <code>.text</code>, <code>.data</code>, and <code>.bss</code>. The PE Header (Windows) defines the executable format and linking details.</li>
+</ol>
+<h5 id="key-differences-between-executable-files-and-raw-binary-files"><strong>Key Differences Between Executable Files and Raw Binary Files</strong></h5>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Aspect</strong></th>
+          <th><strong>Executable File</strong></th>
+          <th><strong>Raw Binary File</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Content</strong></td>
+          <td>Machine code + metadata.</td>
+          <td>Only machine code.</td>
+      </tr>
+      <tr>
+          <td><strong>Structure</strong></td>
+          <td>Complex, with headers and libraries.</td>
+          <td>Simple, no additional structure.</td>
+      </tr>
+      <tr>
+          <td><strong>Usage</strong></td>
+          <td>Managed by the operating system.</td>
+          <td>Directly loaded into memory.</td>
+      </tr>
+      <tr>
+          <td><strong>Common Context</strong></td>
+          <td>General-purpose applications.</td>
+          <td>Embedded systems, firmware.</td>
+      </tr>
+      <tr>
+          <td><strong>Execution</strong></td>
+          <td>OS reads metadata and executes.</td>
+          <td>Requires manual setup or loader.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="level-2-object-files"><strong>Level 2: Object Files</strong></h3>
+<p>Next in the programming language hierarchy are <strong>object files</strong>—the vital intermediary between the raw machine code of executables and the high-level source code written by developers. Object files are <strong>partially compiled machine code</strong> that the CPU can’t directly execute. They are the result of compiling high-level or assembly code and are designed to be combined with other object files or libraries to produce a complete executable. O<strong>bject file</strong>s are the output generated by a compiler or assembler when translating high-level source code or assembly code into machine-readable instructions. They typically have extensions like <code>.o</code> (Linux) or <code>.obj</code> (Windows).</p>
+<p>Object files hide the internal implementation details of a module, exposing only the symbols (functions or variables) meant to be accessed by other parts of the program. Unlike raw binary or executable files, object files are incomplete, often containing unresolved placeholders for references to functions or variables in other files or libraries. Object files are the building blocks of software, containing partially compiled machine code alongside metadata that prepares them for the final step in program creation: <strong>linking</strong>. For example, each source file (.c) of a program in C is compiled into an object file (<code>.o</code> on Linux or <code>.obj</code> on Windows). The <strong>linker</strong> then combines these object files to produce the final executable.</p>
+<p>Object files are structured into sections that organize their contents for the linker. The names of the sections (e.g., .text, .data, .bss, .rodata) are generally the same in object files and executables. However, there are subtle differences in how these sections are structured and used. Object files include some extra data to support linking and debugging. Further, in object files, the sections serve as placeholders for the linker to combine and resolve. They may contain u<strong>nresolved references</strong> (calls to functions that are defined in other object files or libraries) in .text, r<strong>elocation information</strong> (additional data to help the linker adjust memory addresses), s<strong>ymbol table</strong>s (e.g., function names, variable names) for debugging or linking, and i<strong>ncomplete metadata</strong>.</p>
+<p>In <strong>executables</strong>, these sections are finalized and prepared for execution. The linker resolves all references <code>(.text</code> section to contain the complete machine code), adds a<strong>dditional metadata</strong> (headers (e.g., ELF, PE) specifying details like the program’s entry point, memory layout, and required libraries), and removes unused sections. The linker may also reorganize the layout of sections for performance or alignment, ensuring efficient loading and execution.</p>
+<h5 id="sections-in-object-and-executable-files">Sections in Object and Executable Files</h5>
+<table>
+  <thead>
+      <tr>
+          <th>Section Name</th>
+          <th>Found in Object Files?</th>
+          <th>Found in Executables?</th>
+          <th>Purpose</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>.text</code></td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>Contains machine code for functions.</td>
+      </tr>
+      <tr>
+          <td><code>.data</code></td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>Stores initialized global/static variables.</td>
+      </tr>
+      <tr>
+          <td><code>.bss</code></td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>Allocates space for uninitialized variables.</td>
+      </tr>
+      <tr>
+          <td><code>.rodata</code></td>
+          <td>✅</td>
+          <td>✅</td>
+          <td>Stores constants and string literals.</td>
+      </tr>
+      <tr>
+          <td><code>.symtab</code></td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>Symbol table for debugging and linking (removed in executables).</td>
+      </tr>
+      <tr>
+          <td><code>.rel.text</code></td>
+          <td>✅</td>
+          <td>❌</td>
+          <td>Relocation info for .text (removed after linking).</td>
+      </tr>
+      <tr>
+          <td><code>.dynamic</code></td>
+          <td>❌</td>
+          <td>✅</td>
+          <td>Stores information for dynamic linking.</td>
+      </tr>
+      <tr>
+          <td>Headers</td>
+          <td>❌</td>
+          <td>✅</td>
+          <td>Metadata for loading and execution.</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Section Name</strong></th>
+          <th><strong>Purpose</strong></th>
+          <th><strong>Characteristics</strong></th>
+          <th><strong>Example</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>.text</code></td>
+          <td>Stores the program’s machine code (instructions).</td>
+          <td>– Read-only.<br>– Executable by the CPU.</td>
+          <td>The compiled instructions for a function, such as <code>mov eax, 1; syscall</code>.</td>
+      </tr>
+      <tr>
+          <td><code>.data</code></td>
+          <td>Stores initialized global and static variables.</td>
+          <td>– Read-write.<br>– Contains variables with defined values at the start of the program.</td>
+          <td><code>int x = 10;</code><br>stores the value 10 in this section.</td>
+      </tr>
+      <tr>
+          <td><code>.bss</code></td>
+          <td>Allocates space for uninitialized global and static variables.</td>
+          <td>– Read-write.<br>– Memory is initialized to zero by the OS or loader before execution.</td>
+          <td><code>int y;</code><br>reserves space in <code>.bss</code>, but no value is set until runtime.</td>
+      </tr>
+      <tr>
+          <td><code>.rodata</code></td>
+          <td>Contains constants and read-only data, such as string literals.</td>
+          <td>– Read-only.<br>– Prevents accidental modification of constant data.</td>
+          <td>String <code>&quot;Hello, World!&quot;</code><br>stored in the <code>.rodata</code> section.</td>
+      </tr>
+      <tr>
+          <td>Metadata</td>
+          <td>Stores information about the program, such as entry points and structure.</td>
+          <td>– Includes headers and other metadata needed for the OS to load and run the program.</td>
+          <td>ELF header (Linux) or PE header (Windows)<br>that specifies the program’s entry point and architecture.</td>
+      </tr>
+  </tbody>
+</table>
+<h5 id="importance-of-object-files">Importance of object files</h5>
+<p>Object files are essential for building efficient, scalable, and reusable software. Due to their <strong>modularity</strong>, they allow developers to work on separate parts of a program independently. Libraries are distributed as precompiled object files, enabling programs to <strong>reuse code</strong> without duplicating it. For example, the C standard library (<code>libc</code>) is provided as a collection of object files. Object files contain detailed metadata, like symbol tables and line numbers, which help developers <strong>trace and debug</strong> issues using tools like <code>gdb</code>. Without object files, the software development process would become significantly more cumbersome and inefficient, since skipping the object file stage would result in much <strong>longer compilation times</strong>. Every time a small change is made to the source code, the entire program would need to be recompiled from scratch, instead of simply recompiling the modified portion and linking it with existing object files.</p>
+<p>Object files are an essential and default intermediate step in most compilation workflows. However, there are some scenarios where they can be skipped. Sometimes, compilers can generate an executable directly without creating intermediate object files. Internally, the compiler still performs the same stages, but the object files are temporary and not saved. For example: <code>_**gcc file.c -o**_ program</code> compiles and links in one step, bypassing the creation of visible object files. In <strong>interpreted languages</strong> like Python or JavaScript, there’s no concept of object files. Some modern tools and frameworks compile code in memory without generating object files on disk, particularly for rapid prototyping or JIT (Just-In-Time) compilation.</p>
+<hr>
+<h3 id="level-3-assembly-code"><strong>Level 3: Assembly Code</strong></h3>
+<p><strong>Assembly code</strong> is a low-level, human-readable representation of machine instructions. It is a textual representation of machine instructions, using <strong>mnemonics</strong> (short human-readable words) and symbolic names to represent operations, registers, and memory locations. It serves as a critical bridge between high-level programming languages and the raw binary commands that computers execute. While still closely tied to the underlying hardware, assembly code introduces a layer of abstraction that makes it easier for humans to write and understand compared to machine code.</p>
+<p>For example, the machine code <code>10110000 01100001</code> (binary) corresponds to the assembly code <code>MOV AL, 61h</code> (mnemonic). Each assembly instruction corresponds to a specific machine code instruction, making assembly code <strong>architecture-dependent</strong>. Programs written in assembly are tailored to a specific processor type, such as x86, ARM, or MIPS. Assembly code operates as a direct interface with the hardware, CPU registers, memory, and I/O operations. Instructions like <strong>MOV</strong>, <strong>ADD</strong>, and <strong>SUB</strong> manipulate registers, perform arithmetic, and manage data flow. These commands tell the CPU exactly what to do, step by step, using a symbolic representation.</p>
+<p>In the below example, <strong>MOV</strong> is an instruction for data transfer, <strong>AX</strong> and <strong>BX</strong> are registers, and numbers $(5, 10)$ represent immediate values.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Step</th>
+          <th>Assembly Code</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td><code>MOV AX, 5      ; Load the value 5 into the AX register</code></td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><code>ADD AX, 10     ; Add 10 to the value in AX</code></td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td><code>MOV BX, AX     ; Copy the result from AX to BX</code></td>
+      </tr>
+  </tbody>
+</table>
+<p>Since assembly imposes no extra layers of abstraction and allows fine-grained control, it allows developers to optimize performance and manage resources manually. It provides high performance for critical applications, such as device drivers, embedded systems (e.g., microcontrollers, IoT devices). It is also used heavily in s<strong>ystem programming</strong> for writing bootloaders, BIOS, or OS kernels. It also provides a transparent view of the CPU’s actions, making it invaluable for debugging and reverse engineering applications for analyzing malware and software vulnerabilities.</p>
+<p>When developers work with assembly code, they often save their instructions in files with the <code>.S</code> extension. The <code>.S</code> extension is widely used in toolchains like GCC (GNU Compiler Collection), while other assemblers, such as NASM, might use <code>.asm</code> as the preferred file extension.</p>
+<p>Assembly code is a key intermediate step in the compilation process. It is converted into object files by an <strong>assembler</strong>. On the other hand, a <strong>compiler</strong> translates source code into assembly code (e.g., <code>.S</code> files). Finally, a <strong>disassembler</strong> is used to reverse-engineer machine code into assembly.</p>
+<p>Consider a simple example. The following C source code is displayed in assembly directly below.</p>
+<pre tabindex="0"><code class="language-assembly" data-lang="assembly">sum:
+    MOV EAX, DWORD PTR [RDI]    ; Move the first argument into EAX
+    ADD EAX, DWORD PTR [RSI]    ; Add the second argument
+    RET                         ; Return the result
+</code></pre><p>Here, <strong>RDI</strong> and <strong>RSI</strong> are registers used to pass arguments (specific to the x86-64 calling convention). <strong>EAX</strong> stores the result of the computation, and <strong>RET</strong> returns the result to the caller.</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Instruction</strong></th>
+          <th><strong>Category</strong></th>
+          <th><strong>Purpose</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>MOV</td>
+          <td>Data Transfer</td>
+          <td>Move data between registers or memory.</td>
+      </tr>
+      <tr>
+          <td>PUSH</td>
+          <td>Data Transfer</td>
+          <td>Push data onto the stack.</td>
+      </tr>
+      <tr>
+          <td>POP</td>
+          <td>Data Transfer</td>
+          <td>Pop data from the stack.</td>
+      </tr>
+      <tr>
+          <td>ADD</td>
+          <td>Arithmetic</td>
+          <td>Add two values.</td>
+      </tr>
+      <tr>
+          <td>SUB</td>
+          <td>Arithmetic</td>
+          <td>Subtract one value from another.</td>
+      </tr>
+      <tr>
+          <td>MUL</td>
+          <td>Arithmetic</td>
+          <td>Multiply two values (unsigned).</td>
+      </tr>
+      <tr>
+          <td>DIV</td>
+          <td>Arithmetic</td>
+          <td>Divide one value by another (unsigned).</td>
+      </tr>
+      <tr>
+          <td>AND</td>
+          <td>Logical</td>
+          <td>Perform bitwise AND operation.</td>
+      </tr>
+      <tr>
+          <td>OR</td>
+          <td>Logical</td>
+          <td>Perform bitwise OR operation.</td>
+      </tr>
+      <tr>
+          <td>XOR</td>
+          <td>Logical</td>
+          <td>Perform bitwise XOR operation.</td>
+      </tr>
+      <tr>
+          <td>NOT</td>
+          <td>Logical</td>
+          <td>Invert all bits of a value.</td>
+      </tr>
+      <tr>
+          <td>JMP</td>
+          <td>Control Flow</td>
+          <td>Unconditionally jump to a specific address.</td>
+      </tr>
+      <tr>
+          <td>JE/JZ</td>
+          <td>Control Flow</td>
+          <td>Jump if equal/zero flag is set.</td>
+      </tr>
+      <tr>
+          <td>JNE/JNZ</td>
+          <td>Control Flow</td>
+          <td>Jump if not equal/zero flag is clear.</td>
+      </tr>
+      <tr>
+          <td>CALL</td>
+          <td>Control Flow</td>
+          <td>Call a subroutine.</td>
+      </tr>
+      <tr>
+          <td>RET</td>
+          <td>Control Flow</td>
+          <td>Return from a subroutine.</td>
+      </tr>
+      <tr>
+          <td>CMP</td>
+          <td>Comparison</td>
+          <td>Compare two values and set flags.</td>
+      </tr>
+      <tr>
+          <td>TEST</td>
+          <td>Comparison</td>
+          <td>Perform bitwise AND and set flags.</td>
+      </tr>
+      <tr>
+          <td>NOP</td>
+          <td>Miscellaneous</td>
+          <td>Perform no operation (used as a placeholder).</td>
+      </tr>
+      <tr>
+          <td>HLT</td>
+          <td>Miscellaneous</td>
+          <td>Halt the CPU until the next interrupt.</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="level-4-high-level-source-code"><strong>Level 4: High-Level Source Code</strong></h3>
+<p>Level 4 is the realm of high-level programming languages—where humans and computers meet on common ground. High-level languages like Python, Java, and C++ are designed to abstract away the complexities of hardware and low-level operations, allowing developers to focus on logic, algorithms, and problem-solving without worrying about the intricacies of memory addresses or CPU instructions.</p>
+<p>High-level source code is characterized by its <strong>human-readable syntax and structure</strong>. High-level languages provide features such as variables, loops, functions, and classes, which simplify programming. These languages prioritize readability and portability, enabling developers to write code that can run on different platforms with minimal changes.</p>
+<p>High-level code is not directly executed by the CPU. Instead, it must first be translated into lower-level representations like assembly or machine code. This translation is performed by a <strong>compiler</strong> or an <strong>interpreter</strong>. <strong>Compilers</strong> translate the entire high-level source code into assembly or machine code in one step, creating an executable file. Examples include GCC for C/C++ and Java’s JDK for Java Bytecode. <strong>Interpreters</strong> execute the code line-by-line without creating a separate executable. Examples include Python’s interpreter and JavaScript engines in web browsers. This translation step allows the same high-level code to run on different hardware architectures, as long as a compatible compiler or interpreter exists for the platform.</p>
+<p>High-level languages are typically less efficient than lower-level languages like assembly or machine code. The additional layers of abstraction and translation can introduce performance overhead. For this reason, certain applications—like operating systems or real-time systems—still require lower-level programming.</p>
+<p>High-level languages revolutionized software development by making it more accessible, efficient, and portable. They enabled the creation of complex applications, from mobile apps to cloud services, by abstracting away the hardware complexities. This level of abstraction is what powers modern computing, bridging the gap between human logic and the raw binary execution that ultimately drives machines.</p>
+<hr>
+<h3 id="level-5-bytecode"><strong>Level 5: Bytecode</strong></h3>
+<p>At the highest level of the programming language hierarchy lies <strong>bytecode</strong>, an intermediate representation of code designed to be platform-independent. Unlike assembly or machine code, bytecode is not tied to a specific CPU or hardware architecture. Instead, it serves as a universal language that can be executed on any system with the appropriate runtime environment.</p>
+<p>Unlike source code or assembly, bytecode cannot run by the CPU directly on hardware. It relies on a <strong>virtual machine</strong> (e.g., JVM, Python Interpreter) to interpret or compile it into native instructions. Bytecode is generated when source code is compiled, but instead of being directly translated into machine code for a specific CPU, it is converted into an abstract, hardware-agnostic format. For example, on compiling a Java program, the Java compiler generates <strong>Java Bytecode</strong>. The virtual machine acts as an interpreter, translating bytecode into machine code tailored to the underlying hardware. For example, <strong>Java Bytecode</strong> runs on the JVM, and <strong>Python Bytecode</strong> is processed by the Python interpreter. This level of abstraction allows bytecode to prioritize <strong>portability</strong> and <strong>efficiency</strong>. A single bytecode file can run across diverse platforms without modification.</p>
+<p>While bytecode is binary and not human-readable, its role is inherently <strong>closer to human logic</strong> than machine code or assembly. The dependency of bytecode on virtual machines places bytecode at a higher level than source code because it introduces an additional layer between the program and the hardware. This adds an extra layer of execution, but it ensures that the program can operate seamlessly across platforms. Unlike raw machine code, bytecode retains some structural elements of the original source code, such as <strong>method calls</strong>, loops, and <strong>variable</strong> assignments. This makes it more aligned with programming logic than hardware execution.</p>
+<p>While bytecode provides incredible flexibility and portability, it is not directly human-readable. Tools like <strong>disassemblers</strong> can translate bytecode into a more understandable form, but it remains a low-level format optimized for virtual execution.</p>
+<p>Not all virtual machines use bytecode. Bytecode is used by <strong>language-specific virtual machines</strong> (like the JVM or Python PVM) to abstract execution across platforms. However, <strong>system-level virtual machines</strong> (like VirtualBox or VMware) and <strong>compiled languages</strong> bypass bytecode entirely. Whether bytecode is involved depends on the programming language and the execution environment.</p>
+<h3 id="summary-key-terms-in-programming-languages">Summary: Key Terms in Programming Languages</h3>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Term</strong></th>
+          <th><strong>Definition</strong></th>
+          <th><strong>Purpose</strong></th>
+          <th><strong>Example</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Assembly Code</strong></td>
+          <td>Human-readable, low-level instructions.</td>
+          <td>Bridges high-level languages and machine code.</td>
+          <td><code>mov eax, 1; syscall</code></td>
+      </tr>
+      <tr>
+          <td><strong>Bytecode</strong></td>
+          <td>Intermediate, platform-independent code for virtual machines.</td>
+          <td>Enables portability across platforms.</td>
+          <td>Java Bytecode: <code>aload_0; invokevirtual</code></td>
+      </tr>
+      <tr>
+          <td><strong>Object File</strong></td>
+          <td>Partially compiled file with machine instructions.</td>
+          <td>Serves as a building block for executables.</td>
+          <td><code>example.o</code> generated by assembling or compiling.</td>
+      </tr>
+      <tr>
+          <td><strong>Executable File</strong></td>
+          <td>Fully compiled file with all metadata and dependencies.</td>
+          <td>A complete, runnable program for a specific OS.</td>
+          <td><code>.exe</code> (Windows) or <code>.out</code> (Linux).</td>
+      </tr>
+      <tr>
+          <td><strong>Linking</strong></td>
+          <td>Combines object files and resolves external references.</td>
+          <td>Creates a complete executable.</td>
+          <td>Command: <code>gcc -o program example.o library.o</code></td>
+      </tr>
+      <tr>
+          <td><strong>Assembling</strong></td>
+          <td>Converts assembly code into machine-readable binary (object files).</td>
+          <td>Prepares code for linking.</td>
+          <td>Command: <code>gcc -c -o example.o example.S</code></td>
+      </tr>
+      <tr>
+          <td><strong>Machine Code</strong></td>
+          <td>Binary instructions directly executed by the CPU.</td>
+          <td>Represents the final, hardware-level execution of a program.</td>
+          <td>Binary: <code>10101000 00001101</code>; Assembly: <code>mov eax, 13</code></td>
+      </tr>
+  </tbody>
+</table>
+
+    </article>
+  
+
+ 
+
+  
+
+<div id="sharingbuttons">
+    
+    
+    <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fwriteups%2flanguages%2f" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=Understanding%20the%20Hierarchy%20of%20Computer%20Languages&amp;url=http%3a%2f%2flocalhost%3a1313%2fwriteups%2flanguages%2f" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="mailto:?subject=Understanding%20the%20Hierarchy%20of%20Computer%20Languages&amp;body=http%3a%2f%2flocalhost%3a1313%2fwriteups%2flanguages%2f" target="_self" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="https://www.linkedin.com/sharing/share-offsite/?url=http%3a%2f%2flocalhost%3a1313%2fwriteups%2flanguages%2f" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=http%3a%2f%2flocalhost%3a1313%2fwriteups%2flanguages%2f&amp;resubmit=true&amp;title=Understanding%20the%20Hierarchy%20of%20Computer%20Languages" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-6.07-1.72.08-1.1.4-3.05 1.52-3.7.72-.4 1.73-.24 3 .5C17.2 6.3 18.46 7.5 20 7.5c1.65 0 3-1.35 3-3s-1.35-3-3-3c-1.38 0-2.54.94-2.88 2.22-1.43-.72-2.64-.8-3.6-.25-1.64.94-1.95 3.47-2 4.55-2.33.08-4.45.7-6.1 1.72C4.86 8.98 3.96 8.5 3 8.5c-1.65 0-3 1.35-3 3 0 1.32.84 2.44 2.05 2.84-.03.22-.05.44-.05.66 0 3.86 4.5 7 10 7s10-3.14 10-7c0-.22-.02-.44-.05-.66 1.2-.4 2.05-1.54 2.05-2.84zM2.3 13.37C1.5 13.07 1 12.35 1 11.5c0-1.1.9-2 2-2 .64 0 1.22.32 1.6.82-1.1.85-1.92 1.9-2.3 3.05zm3.7.13c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9.8 4.8c-1.08.63-2.42.96-3.8.96-1.4 0-2.74-.34-3.8-.95-.24-.13-.32-.44-.2-.68.15-.24.46-.32.7-.18 1.83 1.06 4.76 1.06 6.6 0 .23-.13.53-.05.67.2.14.23.06.54-.18.67zm.2-2.8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5.7-2.13c-.38-1.16-1.2-2.2-2.3-3.05.38-.5.97-.82 1.6-.82 1.1 0 2 .9 2 2 0 .84-.53 1.57-1.3 1.87z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="whatsapp://send?text=http%3a%2f%2flocalhost%3a1313%2fwriteups%2flanguages%2f" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fwriteups%2flanguages%2f&amp;t=Understanding%20the%20Hierarchy%20of%20Computer%20Languages" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140"><path fill-rule="evenodd" d="M60.94 82.314L17 0h20.08l25.85 52.093c.397.927.86 1.888 1.39 2.883.53.994.995 2.02 1.393 3.08.265.4.463.764.596 1.095.13.334.262.63.395.898.662 1.325 1.26 2.618 1.79 3.877.53 1.26.993 2.42 1.39 3.48 1.06-2.254 2.22-4.673 3.48-7.258 1.26-2.585 2.552-5.27 3.877-8.052L103.49 0h18.69L77.84 83.308v53.087h-16.9v-54.08z"></path></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Understanding%20the%20Hierarchy%20of%20Computer%20Languages&amp;url=http%3a%2f%2flocalhost%3a1313%2fwriteups%2flanguages%2f" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+</div>
+
+  <div class="paginator">
+    
+      <a class="link" href="http://localhost:1313/writeups/blockchain/">← prev</a>
+    
+    
+      <a class="link" href="http://localhost:1313/writeups/memory/">next →</a>
+    
+  </div>
+
+  
+
+</main>
+
+    <footer id="footer">
+  <div>
+    <span>Powered by  <a class=link href=https://gohugo.io target=_blank rel=noopener>Hugo</a> |  Customized from the <a class=link href=https://github.com/michaelneuper/hugo-texify3 target=_blank rel=noopener>TeXify3</a>
+theme</span>
+  </div>
+  <div>
+    <span>Copyright © 2025 Simran Tinani </span>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const sections = document.querySelectorAll("h2[id]");
+      const navLinks = document.querySelectorAll(".category-scroll-nav a");
+    
+      function activateLink() {
+        let scrollY = window.scrollY + 100;
+    
+        sections.forEach(section => {
+          const id = section.getAttribute("id");
+          const top = section.offsetTop;
+    
+          if (scrollY >= top) {
+            navLinks.forEach(link => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      }
+    
+      window.addEventListener("scroll", activateLink);
+    });
+    </script>
+    
+</footer>
+
+  </div>
+
+  
+  <script src='http://localhost:1313/js/script.js' defer></script>
+
+  
+  
+
+  
+  
+
+  
+  
+
+</body>
+
+</html>

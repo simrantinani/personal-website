@@ -1,0 +1,64 @@
+<header class="navbar-container">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="..." crossorigin="anonymous">
+
+  <div class="signature">Simran Tinani</div>
+
+  {{ $currentPage := . }}
+  {{ $menuItems := .Site.Menus.main }}
+  {{ $activeIndex := -1 }}
+
+  <!-- Find active item index -->
+  {{ range $i, $item := $menuItems }}
+{{ if or ($currentPage.IsMenuCurrent $item.Menu $item) (eq $currentPage.RelPermalink $item.URL) }}
+  {{ $activeIndex = $i }}
+{{ end }}
+
+  {{ end }}
+
+  {{ if ge $activeIndex 0 }}
+    {{ $activeItem := index $menuItems $activeIndex }}
+
+    <!-- Now get all other items -->
+    {{ $otherItems := slice }}
+    {{ range $i, $item := $menuItems }}
+      {{ if ne $i $activeIndex }}
+        {{ $otherItems = $otherItems | append $item }}
+      {{ end }}
+    {{ end }}
+
+    <!-- Split those around the center -->
+    {{ $half := add (div (len $otherItems) 2) 0 }}
+    {{ $leftItems := first $half $otherItems }}
+    {{ $rightItems := after $half $otherItems }}
+
+    <nav class="navbar">
+      <div class="nav-left">
+        {{ range $leftItems }}
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        {{ end }}
+      </div>
+
+      <div class="nav-center active">
+        <span>{{ $activeItem.Name }}</span>
+      </div>
+
+      <div class="nav-right">
+        {{ range $rightItems }}
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        {{ end }}
+      </div>
+    </nav>
+
+  {{ else }}
+    <!-- fallback if nothing is active -->
+    <nav class="navbar">
+      <div class="nav-left">
+        {{ range $menuItems }}
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        {{ end }}
+      </div>
+      <div class="nav-center inactive"><span>&nbsp;</span></div>
+      <div class="nav-right"></div>
+    </nav>
+  {{ end }}
+</header>

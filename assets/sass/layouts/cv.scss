@@ -1,0 +1,683 @@
+/* ======================
+   WRAPPER
+====================== */
+.cv-wrapper {
+  background: #fefbf8;
+  padding: 2rem 1rem;
+  font-family: "Georgia", serif;
+}
+
+/* ======================
+   MAIN CV CONTAINER
+====================== */
+.cv {
+  max-width: 1900px;
+  margin: 0;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  color: #2c2c2c;
+}
+
+.cv h1,
+.cv h2,
+.cv h3 {
+  font-family: "Lora", serif;
+  color: #221b1b;
+  border-bottom: 0.5px solid #e0dbe2;
+  padding-bottom: 0.25rem;
+  margin-top: 1rem;
+}
+
+.cv a {
+  color: #a05b7a;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.cv ul {
+  list-style: disc;
+  margin-left: 0.2rem;
+}
+
+/* ======================
+   GRID + LAYOUT
+====================== */
+.cv-grid {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 2rem;
+  max-width: 14900px;
+  margin: 0;
+  margin-left: -4rem;
+  padding: 0.2rem 0;
+  font-family: "Georgia", serif;
+}
+
+.cv-main {
+  padding: 0.5rem 0;
+}
+
+.cv-main h2 {
+  border-bottom: 1.5px solid #d8c8b8;
+  padding-bottom: 0.1rem;
+  margin-top: 0;
+}
+
+.cv-main section + section {
+  margin-top: 1.3rem;
+}
+
+.cv-main hr {
+  border: none;
+  border-bottom: 1px solid #e4d4c4;
+  margin: 0rem 0;
+}
+
+/* ======================
+   SIDEBAR
+====================== */
+.cv-sidebar {
+  background: #fdf6f0;
+  padding: 0.5rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  font-size: 0.72rem;
+}
+
+.cv-sidebar h3 {
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 0.3rem;
+}
+
+.cv-sidebar ul {
+  padding-left: 0.6rem;
+  list-style: square;
+}
+
+.cv-sidebar ul li {
+  margin-bottom: 0.3rem;
+}
+
+.cv-sidebar a {
+  color: #5e2a52;
+}
+
+.cv-sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* ======================
+   NAME BLOCK
+====================== */
+.cv-name h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-family: "Lora", serif;
+  border-bottom: none !important;
+}
+
+.cv-name p {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 0.2rem;
+}
+
+/* ======================
+   REUSABLE ENTRY CLASSES
+====================== */
+.cv-entry {
+  margin-bottom: 0.5rem;
+}
+
+.cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.1rem;
+}
+
+.cv-l1 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #221b1b;
+}
+
+.cv-l2 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #5e5e5e;
+  margin-bottom: 0.11rem;
+}
+
+.cv-l3 {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #2e2e2e;
+  line-height: 1.27;
+}
+
+.cv-l3 li {
+  margin-bottom: 0.042rem;
+}
+
+.cv-date {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #777;
+  white-space: nowrap;
+}
+
+/* ======================
+   SECTION HEADINGS
+====================== */
+.cv-edu-title {
+  font-size: 1.4rem;
+  font-family: "Lora", serif;
+  font-weight: 600;
+  border-bottom: 1px solid #e4dce2;
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cv-achievements .cv-l2 {
+  margin-bottom: 0.05rem;
+}
+
+.cv-achievements .cv-l3 {
+  margin-bottom: 0;
+}
+
+.cv-achievements .cv-entry {
+  margin-bottom: 0.3rem;
+}
+
+/* ======================
+   PRINT STYLES
+====================== */
+@media print {
+  nav,
+  footer,
+  .site-header,
+  .topbar,
+  .navbar,
+  .navbar-container,
+  .nav-left,
+  .nav-right,
+  .nav-center,
+  .signature,
+  .category-scroll-nav {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  p,
+  li,
+  .cv-l3 {
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .cv-sidebar {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding-top: 0.8rem;
+    padding-left: 0.32rem;
+    padding-right: 0.2rem;
+
+    margin-top:0.5rem;
+    margin-left:0.1rem;
+
+    border-right: 1px solid #ccc !important;
+    background: none !important;
+  }
+
+  .cv-section {
+    page-break-inside: avoid !important;
+    page-break-before: avoid !important;
+    page-break-after: auto;
+    margin-bottom: 0.5rem !important;
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
+    padding-left: 0.3rem;
+  }
+
+  .cv-section h2 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .cv-section.nobreak {
+    page-break-inside: avoid !important;
+    page-break-before: avoid !important;
+  }
+
+  .cv-section[data-section="skills"],
+  .cv-section[data-section="projects"],
+  .cv-section[data-section="talks"],
+  .cv-section[data-section="crypto"] {
+    page-break-inside: avoid !important;
+    page-break-before: avoid !important;
+  }
+
+  .cv-entry,
+  .cv-entry-header,
+  .cv-achievements,
+  .cv-entry .cv-l1,
+  .cv-entry .cv-l2,
+  .cv-entry .cv-l3 {
+    page-break-inside: avoid !important;
+  }
+}
+
+/* ======================
+   PRINT PAGE SETUP
+====================== */
+
+
+/* ======================
+   GHOSTBUSTING (NO GREEN OUTLINES)
+====================== */
+*:focus,
+*:active,
+*:visited,
+*:hover {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+a,
+a:focus,
+a:active,
+a:hover,
+button,
+button:focus,
+button:active,
+button:hover,
+input,
+input:focus,
+textarea,
+textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+fieldset {
+  border: none !important;
+  outline: none !important;
+}
+
+
+@page {
+  size: A4;
+  margin: 0.4in 0.3in 0.3in 0in; /* top right bottom left */
+}
+@media print {
+  .cv-grid {
+    grid-template-columns: 150px 1fr;
+  }
+}
+@media print {
+  html {
+    font-size: 12pt; /* Base font size */
+  }
+
+  body {
+    font-size: 10pt; /* Just in case */
+  }
+
+  .cv-l1 {
+    font-size: 10.5pt;
+  }
+
+  .cv-l2 {
+    font-size: 10pt;
+  }
+
+  .cv-l3 {
+    font-size: 9.5pt;
+  }
+
+  .cv-date {
+    font-size: 9pt;
+  }
+
+  .cv-sidebar {
+    font-size: 7pt;
+  }
+
+  .cv-sidebar h3 {
+    font-size: 7pt;
+  }
+
+  .cv a {
+    font-size: 10pt;
+  }
+
+  .cv-name h1 {
+    font-size: 15pt;
+  }
+
+  .cv-name p {
+    font-size: 11pt;
+  }
+
+  .cv-edu-title {
+    font-size: 13pt;
+  }
+
+  .cv-main h2 {
+    font-size: 12pt;
+  }
+
+  .cv h3 {
+    font-size: 11pt;
+  }
+
+  ul, li {
+    font-size: 10pt;
+    margin-left:0;
+  }
+}
+
+@media print {
+  .cv-grid {
+    grid-template-columns: 5cm auto; /* Sidebar = 5cm, main content = remaining space */
+    gap : 1.5rem;
+    line-height:1.34 !important;
+
+  }
+
+  .cv-sidebar {
+    font-size: 7pt;
+    padding-top: 0.8cm;
+    padding-bottom: 0.8cm;
+    padding-left: 0.4cm;
+    padding-right: 0.4cm;
+    border-right: 1.8px solid #aba6a6 !important;
+    margin-right:0.8rem;
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    line-height: 1.3;
+  }
+
+  .cv-sidebar h3 {
+    font-size: 7pt;
+    margin-top: 1.2rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid #bbb;
+  }
+
+  .cv-sidebar ul {
+    padding-left: 1rem;
+  }
+
+  .cv-sidebar ul li {
+    font-size: 7pt;
+    margin-bottom: 0.25rem;
+  }
+
+  .cv-sidebar a {
+    font-size: 7pt;
+    color: #444;
+    text-decoration: underline;
+  }
+}
+
+
+.page-break {
+  display: none;
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  .page-break {
+    page-break-before: always;
+    display: block;
+    height: 0;
+  }
+
+  .print-only {
+    display: block;
+  }
+
+  .second-half {
+    padding-top: 0cm;
+  }
+}
+
+
+.page-break {
+  display: none;
+}
+
+/* ✅ In print, split sidebar into 2 pages */
+@media print {
+  .page-break.print-only {
+    display: block;
+    page-break-before: always;
+    height: 0;
+  }
+
+  .cv-sidebar {
+    page-break-after: avoid;
+  }
+}
+
+/* ============ BULLET LAYOUT (Left rail) ============ */
+.cv-bullet-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.cv-bullet {
+  color: #5e2a52;
+  font-size: 0.65rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+
+
+/* ============ LEVEL 1 BULLET (Roles) ============ */
+.cv-l1 {
+  color: #221b1b;
+  position: relative;
+  padding-left: 0rem;
+  margin-left: 0 rem;
+}
+
+.cv-l1::before {
+  content: "◆";
+  position: absolute;
+  left: -1rem;
+  top: 0.1rem;
+  font-size: 0.75rem;
+  color: #5e2a52;
+  opacity: 0.8;
+}
+
+
+/* ============ LEVEL 2 BULLET (Institutions etc.) ============ */
+
+
+/* Default: no bullets anywhere */
+.cv-l2::before {
+  content: none;
+}
+
+/* Only show for the achievement title line */
+.cv-achievements .cv-l2-title {
+  position: relative;
+  padding-left: 0rem;
+}
+
+.cv-achievements .cv-l2-title::before {
+  content: "◆";
+  position: absolute;
+  left: -1rem;
+  top: 0.1rem;
+  font-size: 0.65rem;
+  color: #5e2a52;
+  opacity: 0.6;
+}
+
+
+/* ============ HIGHLIGHTS (.cv-l3) ============ */
+.cv-l3 {
+  padding-left: 0;
+}
+
+.cv-l3 li {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+  position: relative;
+}
+
+.cv-l3 li::before {
+  content: "▸";
+  position: absolute;
+  left: -1.1rem;
+  color: #5e2a52;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  line-height: 1.4;
+  vertical-align: middle;
+}
+
+.cv-l3 li::before, /* handles ul.cv-l3 > li */
+li.cv-l3::before { /* handles li.cv-l3 */ 
+  content: "▸";
+  position: absolute;
+  left: -1rem;
+  font-size: 0.85rem;
+  color: #5e2a52;
+  opacity: 0.75;
+  line-height: 1.4;
+}
+
+.cv-l3 li,
+li.cv-l3 {
+  list-style: none;
+  position: relative;
+  padding-left: 0rem;
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+
+
+/* ======================
+   GHOSTBUSTING (NO GREEN OUTLINES)
+====================== */
+*:focus,
+*:active,
+*:visited,
+*:hover {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+a,
+a:focus,
+a:active,
+a:hover,
+button,
+button:focus,
+button:active,
+button:hover,
+input,
+input:focus,
+textarea,
+textarea:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+fieldset {
+  border: none !important;
+  outline: none !important;
+}
+
+.cv-sidebar h3 {
+  border: none !important;
+  border-bottom: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+
+@media print {
+  .cv-sidebar h3,
+  .cv-sidebar section,
+  .cv-sidebar ul,
+  .cv-sidebar li {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .cv-sidebar * {
+    background: none !important;
+  }
+
+  .cv-sidebar h3::after,
+  .cv-sidebar section::after,
+  .cv-sidebar h3::before,
+  .cv-sidebar section::before {
+    content: none !important;
+    display: none !important;
+  }
+}
+
+

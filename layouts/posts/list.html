@@ -1,0 +1,19 @@
+{{ define "main" }}
+<main id="main" class="post-list">
+  <h1 class="post-title">Blog</h1>
+
+  {{ range .Pages.ByDate.Reverse }}
+    <article class="post-preview">
+      <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+      {{ with .Params.subtitle }}
+        <p class="subtitle">{{ . }}</p>
+      {{ else }}
+        <p>{{ .Summary }}</p>
+      {{ end }}
+      <p class="meta">{{ .Date.Format "January 2, 2006" }}</p>
+    </article>
+  {{ else }}
+    <p>No blog posts found.</p>
+  {{ end }}
+</main>
+{{ end }}

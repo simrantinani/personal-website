@@ -1,0 +1,71 @@
+{{ define "main" }}
+<main id="main">
+  <div class="research-page">
+    <div class="publications-page">
+
+      <!-- Sort publications by weight (lower = higher priority) -->
+      {{ $full := sort (where .Pages "Params.type" "in" (slice "journal" "preprint")) "Weight" "asc" }}
+      {{ $confs := sort (where .Pages "Params.type" "conference") "Weight" "asc" }}
+      {{ $talks := sort (where .Pages "Params.type" "talk") "Weight" "asc" }}
+      {{ $theses := sort (where .Pages "Params.type" "thesis") "Weight" "asc" }}
+
+      <!-- Full-Length Papers Section -->
+      {{ if $full }}
+        <section class="pub-section-card">
+          <h2 id="full-length-papers" class="pub-section-title">
+            <i class="fas fa-book"></i> Full-Length Papers
+          </h2>
+          <div class="pub-section">
+            {{ range $full }}
+              {{ partial "publication-entry.html" . }}
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+
+      <!-- Conference Papers Section -->
+      {{ if $confs }}
+        <section class="pub-section-card">
+          <h2 id="conference-papers" class="pub-section-title">
+            <i class="fas fa-edit"></i> Conference Papers
+          </h2>
+          <div class="pub-section">
+            {{ range $confs }}
+              {{ partial "publication-entry.html" . }}
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+
+      <!-- Talks Section -->
+      {{ if $talks }}
+        <section class="pub-section-card">
+          <h2 id="talks" class="pub-section-title">
+            <i class="fas fa-microphone"></i> Selected Talks
+          </h2>
+          <div class="pub-section">
+            {{ range $talks }}
+              {{ partial "publication-entry.html" . }}
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+
+      <!-- Theses Section -->
+      {{ if $theses }}
+        <section class="pub-section-card">
+          <h2 id="theses" class="pub-section-title">
+            <i class="fas fa-graduation-cap"></i> Theses
+          </h2>
+          <div class="pub-section">
+            {{ range $theses }}
+              {{ partial "publication-entry.html" . }}
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+
+    </div>
+  </div>
+</main>
+{{ end }}

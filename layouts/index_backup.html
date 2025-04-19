@@ -1,0 +1,27 @@
+{{ define "head" }}
+  {{ partial "styles.html" . }}
+{{ end }}
+
+
+{{ define "main" }}
+
+<!-- 🌟 Horizontal Category Panel -->
+<section class="category-bar px-4 py-2 bg-gray-800 text-white border-b border-gray-700">
+  <div class="max-w-5xl mx-auto flex flex-wrap gap-4 justify-center text-sm font-medium">
+    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+      <a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}"
+         class="px-3 py-1 rounded-full bg-gray-700 hover:bg-gray-600 transition">
+        {{ $name | title }} ({{ len $taxonomy }})
+      </a>
+    {{ end }}
+  </div>
+</section>
+
+
+
+<!-- 📄 Default Content Below (like post list) -->
+{{ .Content }}
+
+{{ partial "main.html" . }}
+
+{{ end }}

@@ -1,0 +1,14 @@
+---
+title: "A Number Theoretic Approach to Cycles in LDPC Codes"
+authors:
+  - Julia Lieb
+  - Simran Tinani
+journal: "IFAC-PapersOnLine, Mathematical Theory of Networks and Systems 2022"
+pdf: "https://pdf.sciencedirectassets.com/313346/1-s2.0-S2405896322X00323/1-s2.0-S2405896322026581/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEAAaCXVzLWVhc3QtMSJHMEUCIQCiJr7PHyDOeVmWDDmPvDifoM7fB0my9bCKxj%2FXaVC8wAIgS5Y6UcvHlNG4WXhPnJ6rFlJaDuLOfH4grKpr4z05ol0quwUIif%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAFGgwwNTkwMDM1NDY4NjUiDGyRbAamP6uB0FksjyqPBcg7AP5CXY8BUEQC8ienvAh97o06V%2Bhy1EqPYWXEgSfAVhaP%2FtmpltfhO2i%2FGSHRFB62gahToerRiUg2fTklxarXGvoy99fFkREI3zfYqGJeJJYdaJwd%2BtG22ehrNsxz8LsiO8cE6E%2BvKcYKy5byptBPMZzYXR%2B9B6pOQyxTvPG5OTguehHtGibfmAxmaelvisePz7NzWgVARas8W%2B5fhT4OH3FkNkTCu9XQ2L%2FLE%2Bnl8ttf2s1Q5zXuNhS5CRJQ%2FJ%2FjqwOqx%2FmjRwlQgsNSg2WqmTD5brYvDl7QBbI96Jlb%2BX61B%2BR2jKDtdAOrXLsaFy3Ovl5omRhygQorCNiHx5psQkdeGu2i%2B2dhmfqLw4kD43b%2Btcj1RsOqGe%2BpPXZgVBmLrXmN0be7vAyak%2BjGRRiANdU7AeJxaXJ%2FOtTby%2FQ0SMY1YBNaftMi%2F3Iilf18j98Ea5axMKtIOUFTKYjSstTuFwlkliT3H7gi0YDhHSKAnZxZ2ZeiLxD4%2B5%2FM%2FcEQ%2FWTcR2IsCTJ%2B1%2F0moDUuElt9GD7yGBfsjvv%2FbineawaujxSxwf6Lz9lIJkwzsHmi5IGvNKw0tgaTMeHsncjDfNgeP1Hu9oyJttjM1Z7xalQtb0X%2Bylinxx0AtFitZqL1uZi%2BR9Vq4izhP6%2BpEeEt0%2BrDU%2BWsc80WQm78VpD50IpJREE1C4AiDvvw%2FZHo9F5HehaPGgRfnSWa1MAb155jDCHX%2FZI7nIR%2FOhjwuyiNXmFDfjOQ4B0y3PNkMx2CRbbtiWubdjug8BhFSKY9RtOnKzUVx8RGnmOAGMLa%2FPhol4j8s80CPiItqx0s3n8P2QO%2FHJGmYbQayiQGVxIZ4mPe2ZLeZ6Z%2B2n%2FMnI0MMFf6RbswzKmNwAY6sQENoWvDTDkdSP5h14V7VfQlgY8ZHQ61uxO7g%2FHsiM8KnthRnjvnvFTJ1qXovndoze82RpWF%2FELWzjarjkL4YJFaiH5%2Fzx7vUFg5CP1BclvBe62F7RaRS8U15ul%2BRzNEjlxl%2Fm8Nt9qxMOaSkTJqy8xzS5NY2i3icbWY8k39mAm%2FqNqcLegjowzWuDvKhGD944WjpL2EB6c2IQSaRe1BgdhJXiM4y2Ebzl7%2FrWzlEGl0%2BrE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250419T081747Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTY4DWTTGDV%2F20250419%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cc6ae73745bd7ff1be5cad0ed1b4224dfe7741aa9ae664added06c3eff227009&hash=57ea38265b0ecc37afead8ed6f91e37d873eca16eb77cd3f93d11e40482426c3&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S2405896322026581&tid=spdf-68d54562-3ea3-4da8-9ef2-a71611445632&sid=497c45a072f57542724b95e7064ee889add7gxrqb&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&rh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=190e595753020155020250&rr=932af7ae780a0395&cc=ch"
+year: 2022
+type: "conference"
+doi: "https://www.sciencedirect.com/science/article/pii/S2405896322026581"
+tags: ["LDPC codes", "number theory", "cycles", "permutation matrices"]
+summary: >
+  This paper provides a number theoretic framework for constructing LDPC codes with large girth, based on permutation matrices. It relates the criteria for the existence of cycles of a certain length with the concept of Sidon sets to obtain LDPC codes with a certain girth. 
+---

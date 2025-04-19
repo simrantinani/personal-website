@@ -1,0 +1,71 @@
+/* Home Page Styling - Scoped to `.home` to only apply to the Home page */
+
+/* Home page card layout */
+.home .home-section-card {
+  max-width: 1280px;
+  margin: 2rem auto;
+  padding: 1.5rem 1.5rem 1rem;
+  background: linear-gradient(to bottom, #fefafc, #fff);
+  background-color: rgba(177, 98, 134, 0.06);
+  border-left: 4px solid rgba(177, 98, 134, 0.25);
+  border-radius: 18px 18px 12px 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.03);
+}
+
+/* Home page content styling */
+.home .home-content {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #2b2b2b;
+  font-family: "Lora", serif;
+}
+
+/* List styles for Home page */
+.home .home-content ul {
+  list-style: none;
+  padding-left: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.home .home-content ul li {
+  position: relative;
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+  font-size: 0.96rem;
+}
+
+.home .home-content ul li::before {
+  content: "➝"; /* Unicode arrow → */
+  position: absolute;
+  left: 0;
+  color: #8c4d67;
+  font-weight: bold;
+}
+
+/* Link styles for Home page */
+.home .home-content ul li a {
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+  color: inherit;
+}
+
+.home .home-content ul li a:hover {
+  color: #b16286 !important; /* Highlighted color for links */
+}
+
+/* Paragraph styles for Home page */
+.home .home-content p {
+  margin-bottom: 1.1rem;
+  line-height: 1.7;
+}
+
+/* Global link styles for Home page */
+.home .home-content a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: inherit;
+}
+
+.home .home-content a:hover {
+  color: #b16286;
+}

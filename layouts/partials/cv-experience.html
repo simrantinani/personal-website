@@ -1,0 +1,17 @@
+<section class="cv-section cv-experience">
+  <h2 class="cv-edu-title">Professional Experience</h2>
+  {{ range site.Data.cv.experience }}
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <div class="cv-l1">{{ .role }}</div>
+        <div class="cv-date">{{ .period }}</div>
+      </div>
+      <div class="cv-l2">{{ .company }}</div>
+      <ul class="cv-l3">
+        {{ range .highlights }}
+          <li>{{ . | markdownify }}</li>
+        {{ end }}
+      </ul>
+    </div>
+  {{ end }}
+</section>

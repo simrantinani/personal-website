@@ -1,0 +1,8 @@
+<section class="cv-section cv-crypto-skills">
+  <h2 class="cv-edu-title"> Cryptography & Cybersecurity </h2>
+  <ul>
+    {{ range site.Data.cv.crypto_skills.items }}
+      <li class="cv-l3">{{ . | markdownify }}</li>
+    {{ end }}
+  </ul>
+</section>

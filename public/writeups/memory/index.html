@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 105%">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <meta name="author" content="">
+
+  
+  
+  <meta name="description" content="A study of how computers store and access information, exploring the types and hierarchy of memory systems.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313//images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313//images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313//images/favicon-16x16.png">
+
+  
+  
+  <meta name="keywords" content='hugo latex theme blog texify texify2 texify3 michael neuper'>
+  
+
+  
+  
+  <link rel="stylesheet" href='/katex/katex.min.css'>
+<script defer defer src='/katex/katex.min.js'></script>
+<script defer src='/katex/contrib/auto-render.min.js'></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+  
+
+
+
+  
+  <meta property="og:url" content="http://localhost:1313/writeups/memory/">
+  <meta property="og:site_name" content="Simran Tinani">
+  <meta property="og:title" content="Understanding Computer Memory: Types and Hierarchy">
+  <meta property="og:description" content="A study of how computers store and access information, exploring the types and hierarchy of memory systems.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="writeups">
+    <meta property="article:published_time" content="2023-02-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-02-01T00:00:00+00:00">
+
+
+  
+  <link rel="canonical" href="http://localhost:1313/writeups/memory/">
+
+  
+  
+  
+  <meta itemprop="name" content="Understanding Computer Memory: Types and Hierarchy">
+  <meta itemprop="description" content="A study of how computers store and access information, exploring the types and hierarchy of memory systems.">
+  <meta itemprop="datePublished" content="2023-02-01T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2023-02-01T00:00:00+00:00">
+  <meta itemprop="wordCount" content="3678">
+  <meta itemprop="keywords" content="Systems, Applications, Security">
+
+  
+  
+  <title>Understanding Computer Memory: Types and Hierarchy - </title>
+  
+
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Understanding Computer Memory: Types and Hierarchy">
+  <meta name="twitter:description" content="A study of how computers store and access information, exploring the types and hierarchy of memory systems.">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dRgZyrTq+zMJq6dfypZ7V+1RWgZ5BkMiDwIXJ1PV4AmxzyozpmXT3RBizJFlMKX8Nfq1f1F5hOgFlAxu9kw6Yg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="stylesheet" href="/css/single.min.a70322a61e6d0900242309fe907aa7c6d09de1af6d54a5203810f320fc65aa58.css" integrity="sha256-pwMiph5tCQAkIwn&#43;kHqnxtCd4a9tVKUgOBDzIPxlqlg=" crossorigin="anonymous">
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/css/common.min.cb988adfe659afb27f8185d06a1772ca1405f376e32f54ecb8cd63a2ca8b2552.css" integrity="sha256-y5iK3&#43;ZZr7J/gYXQahdyyhQF83bjL1TsuM1josqLJVI=" crossorigin="anonymous">
+
+
+
+
+
+  <link rel="stylesheet" href="/css/content.min.ba38eba94cb47fef9936258c42d11ff19fa9686a30b38e783773fe3f15eb44dc.css" integrity="sha256-ujjrqUy0f&#43;&#43;ZNiWMQtEf8Z&#43;paGows454N3P&#43;PxXrRNw=" crossorigin="anonymous">
+
+
+
+
+
+  <link rel="stylesheet" href="/css/custom.min.738f829e2e787ce7bdfe28053c21461ac08b70909965e55b2af0572277fef033.css" integrity="sha256-c4&#43;Cni54fOe9/igFPCFGGsCLcJCZZeVbKvBXInf&#43;8DM=" crossorigin="anonymous">
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <header class="navbar-container">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="..." crossorigin="anonymous">
+
+  <div class="signature">Simran Tinani</div>
+
+  
+  
+  
+
+  
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+  
+    
+    <nav class="navbar">
+      <div class="nav-left">
+        
+          <a href="/">Home</a>
+        
+          <a href="/about/">About</a>
+        
+          <a href="/writeups/">Writeups</a>
+        
+          <a href="/research/">Research</a>
+        
+          <a href="https://github.com/simrantinani">GitHub</a>
+        
+      </div>
+      <div class="nav-center inactive"><span>&nbsp;</span></div>
+      <div class="nav-right"></div>
+    </nav>
+  
+</header>
+
+    
+<main id="main" class="container mx-auto px-4">
+
+  
+  <article class="content numbered-subtitles">
+    <p>Memory in a computer determines the system’s data storage and retrieval capabilities. Memory is essential for computer performance because it determines how quickly data can be accessed and processed. With more memory (especially RAM), a system can handle more tasks simultaneously and run larger programs more efficiently.</p>
+<p>In a computer system, memory is stored in an organized structure, where different types of memory are arranged based on speed, size, and cost. This structure is called the computer’s <strong>memory hierarchy.</strong> The hierarchy ensures that data is stored in the most efficient way, allowing the CPU to access the data it needs quickly while managing larger amounts of data more cost-effectively. Each layer in the hierarchy is designed to serve a specific role.</p>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Memory Type</strong></th>
+          <th><strong>Speed</strong></th>
+          <th><strong>Size</strong></th>
+          <th><strong>Approximate Size</strong></th>
+          <th><strong>Location</strong></th>
+          <th><strong>Purpose</strong></th>
+          <th>Volatility</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Registers</td>
+          <td>Fastest</td>
+          <td>Smallest</td>
+          <td>~1 KB or less</td>
+          <td>Inside CPU</td>
+          <td>Holds data CPU is currently processing</td>
+          <td>Volatile</td>
+      </tr>
+      <tr>
+          <td>Cache</td>
+          <td>Slightly slower than Registers</td>
+          <td>Larger than Registers</td>
+          <td>L1: 32-128 KB</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>L2: 256-512 KB</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>L3: 4-64 MB</td>
+          <td>On/Close to CPU, on motherboard</td>
+          <td>Stores frequently used data to reduce latency</td>
+          <td>Volatile</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>RAM (Primary Memory)</td>
+          <td>Slower than Cache</td>
+          <td>Larger than Cache</td>
+          <td>4-64 GB</td>
+          <td>On motherboard</td>
+          <td>Stores active programs and data for CPU</td>
+          <td>Volatile</td>
+      </tr>
+      <tr>
+          <td>ROM</td>
+          <td>Very fast for reading</td>
+          <td>Smaller than RAM</td>
+          <td>Few MB or less</td>
+          <td>On motherboard</td>
+          <td>Stores firmware and essential instructions (e.g., BIOS).</td>
+          <td>Non-volatile</td>
+      </tr>
+      <tr>
+          <td>Virtual Memory</td>
+          <td>Much slower than RAM</td>
+          <td>Can be large</td>
+          <td>Up to system storage size (GB-TB)</td>
+          <td>Simulated in storage devices</td>
+          <td>Extends RAM virtually using storage space</td>
+          <td>Volatile</td>
+      </tr>
+      <tr>
+          <td>Persistent Storage (HDD/SSD)</td>
+          <td>Slowest</td>
+          <td>Largest</td>
+          <td>256 GB – 10+ TB</td>
+          <td>Separate devices (HDD/SSD)</td>
+          <td>Long-term storage for files, programs, OS</td>
+          <td>Non-volatile</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="registers">Registers</h2>
+<p><strong>Registers</strong> are tiny, ultra-fast volatile memory units located inside the CPU, and are the fastest form of memory in a computer. They serve as the CPU’s real-time workspace, where the most critical operations occur. Registers hold the operands currently being processed, intermediate results of calculations, and essential control information like the <strong>Program Counter (PC)</strong> and status flags.</p>
+<p>During the CPU’s <strong>instruction cycle</strong>—fetch, decode, execute, and write back—registers play a crucial role in enabling seamless operation. The <strong>Instruction Register</strong> holds the current instruction being executed, while <strong>Data Registers</strong> temporarily store operands and intermediate results. The <strong>Program Counter</strong> keeps track of the next instruction’s memory address, and <strong>Status Registers</strong> (or flags) record conditions like zero, carry, or overflow to manage execution outcomes effectively.</p>
+<p>Registers are also essential for <strong>parallel processing</strong>. General-purpose registers handle versatile tasks across a range of operations, while special-purpose registers manage specific functions, such as floating-point arithmetic or vector processing for high-performance computations. The exceptional speed of registers comes at a cost: they are extremely <strong>limited in size</strong> due to physical space constraints and high implementation costs. Modern CPUs typically feature <strong>64-bit registers</strong>, which allow them to process larger chunks of data efficiently. However, their small size means that only the most critical data required for immediate operations can be stored here.</p>
+<h2 id="cache-the-quick-access-memory">Cache: The Quick Access Memory</h2>
+<p><strong>Cache</strong> is a small, high-speed memory sitting between the CPU and RAM. Its primary purpose is to store frequently accessed data and instructions, reducing the time it takes for the CPU to fetch them from the slower main memory (RAM). This significantly improves system performance by providing <strong>immediate access</strong> to data that the CPU is likely to reuse. Cache memory stores two types of data:</p>
+<ol>
+<li>Recently accessed data, instructions: Data the CPU has already used &amp; may need again soon.</li>
+<li><strong>Predictable data</strong>: Data that appears in <strong>loops</strong> or follows sequential memory access patterns.</li>
+</ol>
+<p>Because cache is faster than RAM, it acts as a buffer that minimizes delays caused by frequent trips to main memory. However, cache is much smaller in size, so it stores only the most relevant and frequently used data. Cache memory is organized into multiple levels to balance speed, size, and cost. This hierarchy ensures that data is stored as close as possible to the CPU for rapid access:</p>
+<ul>
+<li><strong>L1 Cache</strong>: Located directly inside the CPU, L1 cache is ultra-fast but also the smallest. It provides immediate access to the most critical data the CPU needs during execution. L1 cache serves as a buffer between the CPU and RAM. Its purpose is to store frequently used or recently accessed data that doesn’t fit in registers but is still needed quickly. It reduces trips to slower main memory (RAM).</li>
+<li><strong>L2 Cache</strong>: Larger than L1 cache but slightly slower, L2 cache is typically located <strong>near the CPU</strong> (on the CPU chip or close to it). It serves as a secondary buffer for data and instructions that don’t fit into L1.</li>
+<li><strong>L3 Cache</strong>: Shared across all CPU cores in <strong>multi-core processors</strong>, L3 cache is much larger than L1 and L2 but also slower. It improves coordination and data sharing between cores, ensuring they have quick access to frequently used data.</li>
+</ul>
+<h2 id="ram-main-memory-for-active-programs">RAM: Main Memory for Active Programs</h2>
+<p><strong>RAM (Random Access Memory)</strong> serves as the <strong>main memory</strong> for storing data that active programs require during operation. When the CPU cannot fit data into <strong>registers</strong> or <strong>cache</strong>, it relies on RAM to hold variables, functions, instructions, and program data needed for execution. RAM is significantly faster than storage options like hard disks or SSDs, making it ideal for handling the <strong>millions or billions of instructions</strong> processed by the CPU every second.</p>
+<p>Unlike <strong>secondary storage</strong>, which is non-volatile (retains data even when powered off), RAM is <strong>volatile</strong>. This means that all data in RAM is lost when the system shuts down or loses power. However, this volatility enables RAM to be dynamically <strong>written, modified, and erased</strong>, allowing programs to interact with memory in real-time. The operating system manages RAM by dynamically allocating space for active programs and processes. It also determines how data is organized within RAM. Once a program completes its task or the system shuts down, the data stored in RAM is erased, freeing up space for new processes. This dynamic and flexible nature of RAM is what enables modern computers to handle multiple applications and tasks efficiently.</p>
+<h3 id="segmentation-of-ram"><strong>Segmentation of RAM</strong></h3>
+<p>RAM is divided into distinct sections, a technique known as <strong>memory segmentation</strong>. Each segment serves a specific purpose, organizing program data for efficient operation by keeping various data types separate and easily accessible. The memory layout in RAM is organized from <strong>low to high memory addresses</strong>, with each segment occupying a defined portion of the address space. At the low end lies the <strong>Text Segment</strong>, while the <strong>Stack</strong> resides at the high end of memory.</p>
+<h4 id="text-segment-or-code-segment"><strong>Text Segment</strong> (or Code Segment)</h4>
+<p>The Text Segment contains the program’s executable instructions—the machine code processed by the CPU. This segment is <strong>read-only</strong>, preventing accidental modification of program logic during execution. Its size is determined at compile time and remains fixed. For example, in a C program, the instructions for functions like <code>printf</code> are stored here.</p>
+<h4 id="read-only-segment-rodata"><strong>Read-Only Segment (.rodata)</strong></h4>
+<p>This segment stores constants and string literals used throughout the program. Although it is often included as part of the Text Segment, it is logically separated to ensure data integrity and optimize memory usage. For instance, the string literal <code>&quot;Hello, World!&quot;</code> in C or C++ is stored in the .rodata segment.</p>
+<h4 id="data-segment"><strong>Data Segment</strong></h4>
+<p>The Data Segment stores <strong>global</strong> and <strong>static variables</strong>, further divided into two parts:</p>
+<ul>
+<li><strong>Initialized Data Segment (.data)</strong>: Holds global or static variables explicitly initialized with values, such as <code>int globalVar = 42;</code></li>
+<li><strong>Uninitialized Data Segment (.bss)</strong>: Contains global or static variables that are uninitialized and default to zero, like <code>int uninitGlobalVar;</code>.</li>
+</ul>
+<h4 id="heap">Heap</h4>
+<p>The <strong>Heap</strong> is a memory region for <strong>dynamic allocation</strong> during runtime. It allows programs to request memory as needed using functions like <strong><code>malloc</code></strong> in C or <code>new</code> in C++. Unlike stack memory, which is automatically cleaned up, memory in the heap persists until explicitly deallocated by the programmer. The Heap grows <strong>upward</strong> in memory and is flexible, making it suitable for large or unknown-sized data structures. However, improper management can lead to memory leaks or fragmentation.</p>
+<h4 id="free-memory">Free Memory</h4>
+<p>Free memory is the <strong>unused region of RAM</strong> between the Heap and the Stack. This space allows the Heap (growing upward) and the Stack (growing downward) to expand during program execution. It acts as a buffer, providing flexibility for dynamic memory allocation and function calls.</p>
+<p>When free memory is exhausted, issues such as <strong>stack overflow</strong>, <strong>heap exhaustion</strong>, or even <strong>program crashes</strong> can occur. Efficient memory management ensures that Heap and Stack allocations remain within the bounds of free memory, avoiding collisions between these regions.</p>
+<h4 id="stack">Stack</h4>
+<p>The Stack is a region for <strong>temporary storage</strong> used during function execution. It stores <strong>Local variables</strong>, <strong>Function parameters</strong>, and <strong>Return addresses</strong>. The Stack operates on a <strong>Last In, First Out (LIFO)</strong> principle: when a function is called, a stack frame is added, and when it finishes, the frame is removed. This automatic memory management makes the Stack fast, but its size is limited. Unlike the Heap, the Stack grows <strong>downward</strong> in memory.</p>
+<h5 id="heap-vs-stack"><strong>Heap vs. Stack</strong></h5>
+<table>
+  <thead>
+      <tr>
+          <th><strong>Aspect</strong></th>
+          <th><strong>Heap</strong></th>
+          <th><strong>Stack</strong></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Purpose</strong></td>
+          <td>Dynamic memory allocation.</td>
+          <td>Temporary storage for function calls.</td>
+      </tr>
+      <tr>
+          <td><strong>Memory Growth</strong></td>
+          <td>Grows upward.</td>
+          <td>Grows downward.</td>
+      </tr>
+      <tr>
+          <td><strong>Management</strong></td>
+          <td>Manual (e.g., <code>malloc</code>, <code>free</code>).</td>
+          <td>Automatic.</td>
+      </tr>
+      <tr>
+          <td><strong>Speed</strong></td>
+          <td>Slower due to manual management.</td>
+          <td>Faster due to automatic allocation.</td>
+      </tr>
+      <tr>
+          <td><strong>Data Size</strong></td>
+          <td>Suitable for large or unknown-sized data structures</td>
+          <td>Best for small, short-lived data.</td>
+      </tr>
+      <tr>
+          <td><strong>Lifetime</strong></td>
+          <td>Persists until explicitly freed.</td>
+          <td>Persists only during function execution.</td>
+      </tr>
+  </tbody>
+</table>
+<p>The <strong>Stack</strong> and <strong>Heap</strong> can be compared to two distinct areas within a kitchen, each serving different functions during the preparation of a meal. The <strong>Stack</strong> functions like the <strong>kitchen countertop</strong>, a small, organized workspace used for temporary tasks. The countertop has limited space but is highly efficient for handling tasks that require immediate attention, such as preparing ingredients , which are cleared as soon as the task is completed. In contrast, the <strong>Heap</strong> can be likened to the <strong>pantry</strong>, a larger, more flexible storage space. The pantry provides ample room for items that are needed for longer durations or in greater quantities, but unlike the countertop, it is not automatically organized. Ingredients are stored in various locations, and they remain there until they are needed again.</p>
+<p>Consider a simple C program:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">globalVar</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span> <span class="c1">// Initialized global variable (.data)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">uninitGlobalVar</span><span class="p">;</span> <span class="c1">// Uninitialized global variable (.bss)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">localVar</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// Local variable (stack)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">static</span> <span class="kt">int</span> <span class="n">staticVar</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// Static variable (.data)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">int</span> <span class="o">*</span><span class="n">heapVar</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span> <span class="o">*</span><span class="p">)</span><span class="nf">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span> <span class="c1">// Dynamically allocated (heap)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="o">*</span><span class="n">heapVar</span> <span class="o">=</span> <span class="mi">99</span><span class="p">;</span> <span class="c1">// Heap memory content
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;Heap Value: %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="o">*</span><span class="n">heapVar</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">free</span><span class="p">(</span><span class="n">heapVar</span><span class="p">);</span> <span class="c1">// Free heap memory
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">myFunction</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><ul>
+<li><strong>globalVar</strong>: Stored in the <strong>.data</strong> segment because it’s an initialized global variable.</li>
+<li><strong>uninitGlobalVar</strong>: Stored in the <strong>.bss</strong> segment since it’s an uninitialized global variable.</li>
+<li><strong>staticVar</strong>: Stored in the <strong>.data</strong> segment because it’s a static variable with an initial value.</li>
+<li><strong>localVar</strong>: Stored in the <strong>stack</strong> because it’s a local variable within a function.</li>
+<li><strong>heapVar</strong>: The pointer <code>heapVar</code> is stored on the <strong>stack</strong>, but the memory it points to is dynamically allocated in the <strong>heap</strong>.</li>
+<li>The string <strong>“Hello, World!”</strong> would be stored in the <strong>Read-Only Segment</strong> (if present).</li>
+</ul>
+<h2 id="read-only-memory-rom">Read-Only Memory (ROM)</h2>
+<p><strong>Read-Only Memory (ROM)</strong> is a non-volatile memory type that stores critical data and instructions needed for a computer’s basic operation. Unlike RAM, ROM retains its contents even when the power is off. This makes it ideal for storing essential firmware, such as the <strong>BIOS</strong> or <strong>UEFI</strong>, which initializes hardware during the startup process. For example, when you turn on your computer, ROM ensures the CPU, RAM, and storage devices are ready to load the operating system.</p>
+<p>ROM plays a vital role because it ensures system stability and reliability. It provides a permanent storage solution for data that should not be modified during regular use, like boot instructions and low-level hardware configurations. While some types of ROM, such as EEPROM, allow reprogramming, the data in most ROM types is fixed during manufacturing or written just once by the user. ROM is much smaller than RAM, typically measured in megabytes or less, but its reliability makes it indispensable for system booting and embedded systems.</p>
+<p>ROM technology has evolved over time, leading to several types with varying levels of flexibility:</p>
+<ul>
+<li><strong>Mask ROM</strong>: Programmed during manufacturing, cannot be altered. Most rigid type of ROM.</li>
+<li><strong>PROM (Programmable ROM)</strong>: Allows data to be written once after manufacturing.</li>
+<li><strong>EPROM (Erasable Programmable ROM)</strong>: Can be erased using ultraviolet (UV) light and reprogrammed, making it more flexible than Mask ROM.</li>
+<li><strong>EEPROM (Electrically Erasable Programmable ROM)</strong>: Allows data to be erased and rewritten electronically. Modern systems often use EEPROM for firmware updates.</li>
+<li><strong>Flash Memory</strong>: A type of EEPROM that is faster and commonly used for frequent firmware updates in modern devices.</li>
+</ul>
+<p>While traditional ROM still exists in some systems, it has largely been replaced by reprogrammable technologies like Flash Memory and EEPROM. Modern firmware requires frequent updates, and these newer technologies allow for greater flexibility while retaining the reliability of ROM.</p>
+<h2 id="virtual-memory">Virtual Memory</h2>
+<p>Virtual memory is a technique that extends a computer’s physical memory (RAM) by using disk storage as a backup. It allows programs to run as if there is more memory available than what is physically installed. This approach helps manage memory overflow, enables efficient multitasking, and prevents system crashes when RAM is fully utilized. For example, when multiple browser tabs are opened, the operating system may move inactive tabs into virtual memory.</p>
+<p>Virtual memory is essential because it <strong>handles low RAM situations</strong>, <strong>supports multitasking</strong>, and <strong>optimizes memory usage</strong>. When physical RAM is full, the operating system uses virtual memory to store data that isn’t actively being used, moving it to a special area on the hard disk or SSD called the <strong>swap file</strong>. Without virtual memory, the computer could become unresponsive or fail to handle additional processes when memory demands exceed the available RAM. By swapping inactive or less-used data to the disk, virtual memory ensures that high-priority processes remain responsive and that the system can handle multitasking efficiently.</p>
+<p>While virtual memory provides flexibility, it comes at a cost. Disk storage is significantly <strong>slower</strong> than RAM, so frequent swapping—also known as <strong>thrashing</strong>—can lead to noticeable performance degradation. Programs may take longer to load, and the system can become sluggish during intensive memory use. Excessive reliance on virtual memory can also lead to increased wear and tear on storage devices, particularly SSDs. The constant writing and erasing of data in the swap file can shorten the lifespan of the drive, making efficient memory management even more critical.</p>
+<h3 id="techniques-in-virtual-memory-paging-and-segmentation">Techniques in Virtual Memory: Paging and Segmentation</h3>
+<h4 id="paging">Paging</h4>
+<p>Paging is a memory management technique that divides memory into fixed-size blocks called <strong>pages</strong>. These pages reside in <strong>virtual memory</strong> and are mapped to <strong>frames</strong>, which are fixed-size blocks of <strong>physical memory (RAM)</strong>. Paging ensures efficient memory utilization by breaking large programs into manageable chunks that can be loaded into available frames in RAM.</p>
+<p>Virtual memory is divided into <strong>pages</strong>, while physical memory is divided into <strong>frames</strong>. Pages and frames are always the same size, ensuring a seamless fit. E.g., a 12 KB program with three 4 KB pages, each loaded into three corresponding frames. The operating system maintains a <strong>page table</strong> for each process. The page table acts as a mapping between <strong>virtual page numbers (VPNs)</strong> and <strong>physical frame numbers (PFNs)</strong>.</p>
+<p>A <strong>page fault</strong> occurs when a program tries to access a page not currently in RAM. The operating system retrieves the required page from the disk (swap file) and loads it into a free or replaced frame in RAM.<strong>Replacement Policies</strong>: When no free frames are available, the OS uses algorithms like <strong>FIFO (First In, First Out)</strong> and <strong>LRU (Least Recently Used)</strong>.</p>
+<h4 id="segmentation">Segmentation</h4>
+<p>Segmentation is another memory management technique that divides memory into variable-sized blocks called <strong>segments</strong>, based on logical sections of a program, such as <strong>code</strong>, <strong>data</strong>, and <strong>stack</strong>. Each segment corresponds to functional parts (e.g., functions, variables, stack). Each segment is a continuous block of memory and is identified by a <strong>segment number</strong>.</p>
+<p>The operating system maintains a <strong>segment table</strong> to map each segment to a location in physical memory. The segment table stores the <strong>Base Address</strong> (the starting address of the segment in physical memory) and the <strong>Limit</strong> (the size of the segment). Segmentation allows for better protection and sharing, as each segment can have its own permissions (e.g., read-only for code, read/write for data).</p>
+<p>Some systems combine paging and segmentation for more efficient memory management. Memory is divided into <strong>segments</strong>, and each segment is further divided into <strong>pages</strong>. This hybrid approach offers the benefits of both techniques: logical organization from segmentation and reduced fragmentation from paging.</p>
+<div style="text-align: center;">
+  <img src="https://simrantinani.wordpress.com/wp-content/uploads/2024/12/image-3.png?w=1024" width="300" alt="Descriptive alt text">
+</div>
+<h2 id="persistent-storage">Persistent Storage</h2>
+<p>Persistent storage, such as <strong>HDDs (Hard Disk Drives)</strong> and <strong>SSDs (Solid State Drives)</strong>, provides long-term, non-volatile storage for a computer system. Unlike volatile memory like RAM or registers, data stored in persistent storage remains intact even when the system is powered off. Persistent storage is essential for holding the operating system, applications, and user files like documents, media, and backups. Persistent storage devices serve as the computer’s primary repository for data that isn’t immediately needed by the CPU. When you save a file, install software, or download a video, that data is stored in a persistent storage device. Persistent storage has evolved significantly over the years, offering a range of options with varying performance, capacity, and cost.</p>
+<ul>
+<li><strong>Hard Disk Drives (HDDs)</strong>: HDDs are the traditional choice for data storage, offering high capacity at a lower cost. They use magnetic platters to store data, which is accessed by a read/write head. While affordable and capable of holding terabytes of data, HDDs are slower than SSDs due to their mechanical nature.</li>
+<li><strong>Solid State Drives (SSDs)</strong>: SSDs use NAND flash memory to store data electronically, making them much faster than HDDs. With no moving parts, SSDs are more durable and energy-efficient, though they typically cost more per gigabyte. Modern systems often use SSDs for the operating system and frequently accessed programs.</li>
+<li><strong>External Storage</strong>: Devices like USB drives and external HDDs/SSDs provide portable and scalable storage solutions, ideal for backing up data or transferring files between systems.</li>
+</ul>
+<p>In the memory hierarchy, persistent storage sits at the bottom, offering the highest capacity but at the cost of being the slowest. It serves as the long-term repository for data, while faster memory types like RAM and cache handle short-term, immediate operations. When the CPU needs data stored on a persistent device, the operating system retrieves it and loads it into RAM for processing. For example, opening a video editing application involves reading the program’s files from the SSD and transferring them to RAM.</p>
+<p>Most <strong>pre-built desktops and laptops</strong> come with at least one pre-installed storage device (either an HDD, SSD, or both). In desktops, HDDs and SSDs are mounted in dedicated slots or bays within the computer case. In laptops, HDDs and SSDs are located in smaller, designated compartments inside the laptop chassis.</p>
+<h2 id="memory-management">Memory Management</h2>
+<p>Memory management is a fundamental process in a computer system that ensures efficient and secure usage of memory resources. It coordinates the allocation, tracking, and deallocation of memory for programs during execution. By managing memory effectively, the operating system (OS) ensures that programs receive the memory they need, prevents interference between processes, and maximizes overall system performance.</p>
+<h3 id="key-functions-of-memory-management">Key Functions of Memory Management</h3>
+<p>The operating system is typically responsible for memory management, and handles tasks such as:</p>
+<ol>
+<li><strong>Relocation</strong>: In multiprogramming systems, programs may need to be moved to different memory locations during execution. Memory management handles this relocation seamlessly, ensuring that the program’s functionality is unaffected. E.g., a program initially loaded at address <code>0x0000</code> might be relocated to <code>0x2000</code> to optimize memory usage or accommodate additional processes. The OS updates all internal references (such as pointers) accordingly.</li>
+<li><strong>Memory Allocation</strong>: Allocation is essential for providing processes with the memory they need. It can be **Static (**Fixed at compile time (e.g., global variables)) or **Dynamic (**Determined at runtime (e.g., heap or stack memory)). Effective memory allocation minimizes <strong>fragmentation</strong> and ensures balanced usage. The OS must also decide how to distribute available memory among processes while avoiding inefficiencies like unused gaps.</li>
+<li><strong>Protection</strong>: Memory protection ensures that one program cannot access or modify another program’s memory, maintaining system stability and security. This is achieved through techniques like memory isolation and hardware-based mechanisms such as segmentation and paging. E.g., a misbehaving program is prevented from corrupting critical system memory.</li>
+<li><strong>Sharing</strong>: To promote efficiency, memory management enables processes to share memory where appropriate. Shared libraries, for instance, allow multiple programs to use the same code without duplicating it in memory. Similarly, interprocess communication mechanisms utilize shared memory regions for faster data exchange.</li>
+<li><strong>Logical and Physical Organization</strong>: Programs perceive memory as a contiguous block of addresses (logical memory), simplifying programming. The OS, maps this logical view to the fragmented and limited physical memory available on the hardware. Techniques like paging or segmentation bridge the gap, ensuring smooth operation while optimizing resource use.</li>
+</ol>
+<h3 id="common-challenges">Common Challenges</h3>
+<ol>
+<li><strong>Memory Leaks</strong>: occur when a program fails to release memory it no longer uses, causing the system to run out of usable memory over time. For example, a program might allocate memory for temporary data but never free it. Languages like <strong>Java</strong> and <strong>Python</strong> mitigate this issue using <strong>garbage collection</strong>, where the OS automatically reclaims unused memory.</li>
+<li><strong>Fragmentation</strong>: Inefficient memory allocation can lead to fragmentation. <strong>External Fragmentation</strong>occurs when free memory is scattered in small, unusable chunks. <strong>Internal Fragmentation</strong> occurs when allocated memory blocks are larger than required, wasting space.<br>
+Paging minimizes external fragmentation by using fixed-size pages, while segmentation helps reduce internal fragmentation by allocating memory in variable-sized blocks.</li>
+<li><strong>Virtual Memory</strong> <strong>overuse</strong>: When physical RAM is insufficient, virtual memory extends it by using disk space as a temporary storage area. Techniques like paging and segmentation allow the system to swap less-used data to the disk, freeing RAM for high-priority tasks. However, excessive swapping (thrashing) can degrade performance.</li>
+</ol>
+<p>Without proper memory management, issues like memory leaks, fragmentation, or thrashing can significantly degrade system performance, leading to crashes or slowdowns. By orchestrating the use of RAM, cache, and persistent storage, memory management enables the seamless operation of programs and applications, making it a cornerstone of modern computing. Effective memory management ensures that a system runs smoothly by providing fast access to memory and preventing performance issues related to memory overuse or inefficiency.</p>
+
+    </article>
+  
+
+ 
+
+  
+
+<div id="sharingbuttons">
+    
+    
+    <a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fwriteups%2fmemory%2f" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=Understanding%20Computer%20Memory%3a%20Types%20and%20Hierarchy&amp;url=http%3a%2f%2flocalhost%3a1313%2fwriteups%2fmemory%2f" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="mailto:?subject=Understanding%20Computer%20Memory%3a%20Types%20and%20Hierarchy&amp;body=http%3a%2f%2flocalhost%3a1313%2fwriteups%2fmemory%2f" target="_self" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="https://www.linkedin.com/sharing/share-offsite/?url=http%3a%2f%2flocalhost%3a1313%2fwriteups%2fmemory%2f" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=http%3a%2f%2flocalhost%3a1313%2fwriteups%2fmemory%2f&amp;resubmit=true&amp;title=Understanding%20Computer%20Memory%3a%20Types%20and%20Hierarchy" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-6.07-1.72.08-1.1.4-3.05 1.52-3.7.72-.4 1.73-.24 3 .5C17.2 6.3 18.46 7.5 20 7.5c1.65 0 3-1.35 3-3s-1.35-3-3-3c-1.38 0-2.54.94-2.88 2.22-1.43-.72-2.64-.8-3.6-.25-1.64.94-1.95 3.47-2 4.55-2.33.08-4.45.7-6.1 1.72C4.86 8.98 3.96 8.5 3 8.5c-1.65 0-3 1.35-3 3 0 1.32.84 2.44 2.05 2.84-.03.22-.05.44-.05.66 0 3.86 4.5 7 10 7s10-3.14 10-7c0-.22-.02-.44-.05-.66 1.2-.4 2.05-1.54 2.05-2.84zM2.3 13.37C1.5 13.07 1 12.35 1 11.5c0-1.1.9-2 2-2 .64 0 1.22.32 1.6.82-1.1.85-1.92 1.9-2.3 3.05zm3.7.13c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9.8 4.8c-1.08.63-2.42.96-3.8.96-1.4 0-2.74-.34-3.8-.95-.24-.13-.32-.44-.2-.68.15-.24.46-.32.7-.18 1.83 1.06 4.76 1.06 6.6 0 .23-.13.53-.05.67.2.14.23.06.54-.18.67zm.2-2.8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5.7-2.13c-.38-1.16-1.2-2.2-2.3-3.05.38-.5.97-.82 1.6-.82 1.1 0 2 .9 2 2 0 .84-.53 1.57-1.3 1.87z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="whatsapp://send?text=http%3a%2f%2flocalhost%3a1313%2fwriteups%2fmemory%2f" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=http%3a%2f%2flocalhost%3a1313%2fwriteups%2fmemory%2f&amp;t=Understanding%20Computer%20Memory%3a%20Types%20and%20Hierarchy" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140"><path fill-rule="evenodd" d="M60.94 82.314L17 0h20.08l25.85 52.093c.397.927.86 1.888 1.39 2.883.53.994.995 2.02 1.393 3.08.265.4.463.764.596 1.095.13.334.262.63.395.898.662 1.325 1.26 2.618 1.79 3.877.53 1.26.993 2.42 1.39 3.48 1.06-2.254 2.22-4.673 3.48-7.258 1.26-2.585 2.552-5.27 3.877-8.052L103.49 0h18.69L77.84 83.308v53.087h-16.9v-54.08z"></path></svg>
+        </div>
+      </div>
+    </a>
+    
+
+    
+    
+    <a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Understanding%20Computer%20Memory%3a%20Types%20and%20Hierarchy&amp;url=http%3a%2f%2flocalhost%3a1313%2fwriteups%2fmemory%2f" target="_blank" rel="noopener" aria-label="">
+      <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/></svg>
+        </div>
+      </div>
+    </a>
+    
+</div>
+
+  <div class="paginator">
+    
+      <a class="link" href="http://localhost:1313/writeups/languages/">← prev</a>
+    
+    
+      <a class="link" href="http://localhost:1313/writeups/code-translation/">next →</a>
+    
+  </div>
+
+  
+
+</main>
+
+    <footer id="footer">
+  <div>
+    <span>Powered by  <a class=link href=https://gohugo.io target=_blank rel=noopener>Hugo</a> |  Customized from the <a class=link href=https://github.com/michaelneuper/hugo-texify3 target=_blank rel=noopener>TeXify3</a>
+theme</span>
+  </div>
+  <div>
+    <span>Copyright © 2025 Simran Tinani </span>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const sections = document.querySelectorAll("h2[id]");
+      const navLinks = document.querySelectorAll(".category-scroll-nav a");
+    
+      function activateLink() {
+        let scrollY = window.scrollY + 100;
+    
+        sections.forEach(section => {
+          const id = section.getAttribute("id");
+          const top = section.offsetTop;
+    
+          if (scrollY >= top) {
+            navLinks.forEach(link => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      }
+    
+      window.addEventListener("scroll", activateLink);
+    });
+    </script>
+    
+</footer>
+
+  </div>
+
+  
+  <script src='http://localhost:1313/js/script.js' defer></script>
+
+  
+  
+
+  
+  
+
+  
+  
+
+</body>
+
+</html>

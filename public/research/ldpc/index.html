@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 105%">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <meta name="author" content="">
+
+  
+  
+  <meta name="description" content="This paper provides a number theoretic framework for constructing LDPC codes with large girth, based on permutation matrices. It relates the criteria for the existence of cycles of a certain length with the concept of Sidon sets to obtain LDPC codes with a certain girth.">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313//images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313//images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313//images/favicon-16x16.png">
+
+  
+  
+  <meta name="keywords" content='hugo latex theme blog texify texify2 texify3 michael neuper'>
+  
+
+  
+  
+  <link rel="stylesheet" href='/katex/katex.min.css'>
+<script defer defer src='/katex/katex.min.js'></script>
+<script defer src='/katex/contrib/auto-render.min.js'></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+  
+
+
+
+  
+  <meta property="og:url" content="http://localhost:1313/research/ldpc/">
+  <meta property="og:site_name" content="Simran Tinani">
+  <meta property="og:title" content="A Number Theoretic Approach to Cycles in LDPC Codes">
+  <meta property="og:description" content="This paper provides a number theoretic framework for constructing LDPC codes with large girth, based on permutation matrices. It relates the criteria for the existence of cycles of a certain length with the concept of Sidon sets to obtain LDPC codes with a certain girth.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="research">
+    <meta property="article:tag" content="LDPC Codes">
+    <meta property="article:tag" content="Number Theory">
+    <meta property="article:tag" content="Cycles">
+    <meta property="article:tag" content="Permutation Matrices">
+
+
+  
+  <link rel="canonical" href="http://localhost:1313/research/ldpc/">
+
+  
+  
+  
+  <meta itemprop="name" content="A Number Theoretic Approach to Cycles in LDPC Codes">
+  <meta itemprop="description" content="This paper provides a number theoretic framework for constructing LDPC codes with large girth, based on permutation matrices. It relates the criteria for the existence of cycles of a certain length with the concept of Sidon sets to obtain LDPC codes with a certain girth.">
+  <meta itemprop="keywords" content="LDPC Codes,Number Theory,Cycles,Permutation Matrices">
+
+  
+  
+  <title>A Number Theoretic Approach to Cycles in LDPC Codes - </title>
+  
+
+  
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="A Number Theoretic Approach to Cycles in LDPC Codes">
+  <meta name="twitter:description" content="This paper provides a number theoretic framework for constructing LDPC codes with large girth, based on permutation matrices. It relates the criteria for the existence of cycles of a certain length with the concept of Sidon sets to obtain LDPC codes with a certain girth.">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dRgZyrTq+zMJq6dfypZ7V+1RWgZ5BkMiDwIXJ1PV4AmxzyozpmXT3RBizJFlMKX8Nfq1f1F5hOgFlAxu9kw6Yg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+
+
+
+
+
+
+
+  
+  
+    <link rel="stylesheet" href="/css/single.min.a70322a61e6d0900242309fe907aa7c6d09de1af6d54a5203810f320fc65aa58.css" integrity="sha256-pwMiph5tCQAkIwn&#43;kHqnxtCd4a9tVKUgOBDzIPxlqlg=" crossorigin="anonymous">
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/css/common.min.cb988adfe659afb27f8185d06a1772ca1405f376e32f54ecb8cd63a2ca8b2552.css" integrity="sha256-y5iK3&#43;ZZr7J/gYXQahdyyhQF83bjL1TsuM1josqLJVI=" crossorigin="anonymous">
+
+
+
+
+
+  <link rel="stylesheet" href="/css/content.min.ba38eba94cb47fef9936258c42d11ff19fa9686a30b38e783773fe3f15eb44dc.css" integrity="sha256-ujjrqUy0f&#43;&#43;ZNiWMQtEf8Z&#43;paGows454N3P&#43;PxXrRNw=" crossorigin="anonymous">
+
+
+
+
+
+  <link rel="stylesheet" href="/css/custom.min.738f829e2e787ce7bdfe28053c21461ac08b70909965e55b2af0572277fef033.css" integrity="sha256-c4&#43;Cni54fOe9/igFPCFGGsCLcJCZZeVbKvBXInf&#43;8DM=" crossorigin="anonymous">
+
+
+
+
+
+
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <header class="navbar-container">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="..." crossorigin="anonymous">
+
+  <div class="signature">Simran Tinani</div>
+
+  
+  
+  
+
+  
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+  
+
+  
+    
+    <nav class="navbar">
+      <div class="nav-left">
+        
+          <a href="/">Home</a>
+        
+          <a href="/about/">About</a>
+        
+          <a href="/writeups/">Writeups</a>
+        
+          <a href="/research/">Research</a>
+        
+          <a href="https://github.com/simrantinani">GitHub</a>
+        
+      </div>
+      <div class="nav-center inactive"><span>&nbsp;</span></div>
+      <div class="nav-right"></div>
+    </nav>
+  
+</header>
+
+    
+<main id="main" class="container mx-auto px-4">
+
+  
+  <article class="content numbered-subtitles">
+    
+    </article>
+  
+
+ 
+
+  
+  <div style="margin-bottom: 10rem;"></div>
+</main>
+
+</main>
+
+    <footer id="footer">
+  <div>
+    <span>Powered by  <a class=link href=https://gohugo.io target=_blank rel=noopener>Hugo</a> |  Customized from the <a class=link href=https://github.com/michaelneuper/hugo-texify3 target=_blank rel=noopener>TeXify3</a>
+theme</span>
+  </div>
+  <div>
+    <span>Copyright © 2025 Simran Tinani </span>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const sections = document.querySelectorAll("h2[id]");
+      const navLinks = document.querySelectorAll(".category-scroll-nav a");
+    
+      function activateLink() {
+        let scrollY = window.scrollY + 100;
+    
+        sections.forEach(section => {
+          const id = section.getAttribute("id");
+          const top = section.offsetTop;
+    
+          if (scrollY >= top) {
+            navLinks.forEach(link => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      }
+    
+      window.addEventListener("scroll", activateLink);
+    });
+    </script>
+    
+</footer>
+
+  </div>
+
+  
+  <script src='http://localhost:1313/js/script.js' defer></script>
+
+  
+  
+
+  
+  
+
+  
+  
+
+</body>
+
+</html>

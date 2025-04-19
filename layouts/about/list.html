@@ -1,0 +1,9 @@
+{{ define "main" }}
+<main id="main" class="about">
+  <section class="about-section-card">
+    <div class="about-content">
+        {{ .Content |  markdownify }}
+    </div>
+  </section>
+</main>
+{{ end }}

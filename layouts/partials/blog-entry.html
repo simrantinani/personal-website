@@ -1,0 +1,41 @@
+<div class="pub-entry">
+    <!-- Title -->
+    <div class="pub-title">
+        <i class="fas fa-newspaper pub-type-icon"></i>
+        <strong>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </strong>
+    </div>
+  
+    <!-- Subtitle or Summary -->
+    {{ with .Params.subtitle }}
+      <div class="pub-meta">{{ . }}</div>
+    {{ else }}
+      <div class="pub-meta">{{ .Summary }}</div>
+    {{ end }}
+  
+    <!-- Meta: Date & Read Time -->
+    <div class="pub-meta">
+      <em>{{ .Date.Format " 2006" }}</em>
+      {{ if .Site.Params.showReadingTime }} • ~{{ .ReadingTime }} min read{{ end }}
+  
+      <!-- Optional: Link pills -->
+      {{ with .Params.links }}
+        {{ range . }}
+          <a class="pill pill-pdf" href="{{ .url }}" target="_blank">
+            <i class="fas fa-link"></i> {{ .label }}
+          </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  
+    <!-- Optional Tags -->
+    {{ if .Params.tags }}
+      <div class="tags">
+        {{ range .Params.tags }}
+          <a class="tag" href="{{ "tags" | relURL }}{{ . | urlize }}">#{{ . }}</a>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+  

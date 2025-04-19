@@ -1,0 +1,20 @@
+<section class="cv-section cv-achievements">
+  <h2 class="cv-edu-title">Selected Academic Achievements</h2>
+  {{ range site.Data.cv.achievements }}
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <div class="cv-l2 cv-l2-title"> <!-- Add this class -->
+          {{ with .icon }}
+            <span class="icon-wrap">{{ partial "icons/achievement-icon.html" . }}</span>
+          {{ end }}
+          {{ .title }}
+        </div>
+        <div class="cv-date">{{ .date }}</div>
+      </div>
+      <div class="cv-l2">{{ .institution }}</div>
+      {{ with .description }}
+        <div class="cv-l3">{{ . }}</div>
+      {{ end }}
+    </div>
+  {{ end }}
+</section>

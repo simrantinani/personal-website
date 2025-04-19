@@ -1,0 +1,10 @@
+{{ define "main" }}
+<main id="main" class="home">
+  <section class="home-section-card">
+    <div class="home-content">
+      <!-- Render the content from index.md here -->
+      {{ .Content | markdownify }}  <!-- This is where your markdown content from index.md will be rendered as HTML -->
+    </div>
+  </section>
+</main>
+{{ end }}

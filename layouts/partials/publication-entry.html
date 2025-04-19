@@ -1,0 +1,92 @@
+{{- $ctx := . -}}
+{{- $yourname := "Simran Tinani" -}}
+{{- $icon := "fas fa-file-alt" -}}
+
+<div class="pub-entry">
+
+  <!-- Title, Year, and Pills all inline -->
+  <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.6rem;">
+
+    <!-- Left: Icon + Title + Year -->
+    <div style="display: flex; align-items: baseline; gap: 0.4rem; flex: 1 1 auto; min-width: 0;">
+      <i class="{{ $icon }} pub-type-icon"></i>
+      <strong style="white-space: nowrap; text-overflow: ellipsis;">{{ $ctx.Title }}</strong>
+      {{ with $ctx.Params.year }}
+        <span class="year">({{ . }})</span>
+      {{ end }}
+    </div>
+
+    <!-- Right: Pills (links) -->
+    <div class="pub-links" style="display: flex; gap: 0.5rem; flex-shrink: 0; flex-wrap: wrap;">
+      {{ with $ctx.Params.doi }}
+        {{ if eq $ctx.Params.type "thesis" }}
+          <a class="pill pill-thesis-doi" href="{{ . }}" target="_blank">
+            <i class="fas fa-link"></i> DOI
+          </a>
+        {{ else }}
+          <a class="pill pill-journal" href="{{ . }}" target="_blank">
+            <i class="fas fa-book-open"></i> Journal
+          </a>
+        {{ end }}
+      {{ end }}
+
+      {{ with $ctx.Params.pdf }}
+        <a class="pill pill-pdf" href="{{ . }}" target="_blank">
+          <i class="fas fa-file-pdf"></i> PDF
+        </a>
+      {{ end }}
+
+      {{ with $ctx.Params.arxiv }}
+        <a class="pill pill-arxiv" href="{{ . }}" target="_blank">
+          <i class="fas fa-code-branch"></i> arXiv
+        </a>
+      {{ end }}
+
+      {{ with $ctx.Params.slides }}
+        <a class="pill pill-pdf" href="{{ . }}" target="_blank">
+          <i class="fas fa-file-powerpoint"></i> Slides
+        </a>
+      {{ end }}
+    </div>
+  </div>
+
+  <!-- Authors, metadata -->
+  <div class="pub-meta">
+    {{ with $ctx.Params.authors }}
+      {{ $last := sub (len .) 1 }}
+      {{ range $i, $a := . }}
+        {{ $name := replace (trim $a " ") "\u00A0" " " }}
+        {{ if eq $name $yourname }}
+          <strong>{{ $name }}</strong>{{ if lt $i $last }}, {{ end }}
+        {{ else }}
+          {{ $name }}{{ if lt $i $last }}, {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+
+    {{ if or $ctx.Params.journal $ctx.Params.institution }}
+      <span class="pub-separator"> – </span>
+      <em>{{ or $ctx.Params.journal $ctx.Params.institution }}</em>
+    {{ end }}
+
+    {{ with $ctx.Params.note }}
+      <span class="pub-separator"> • </span>
+      <span>{{ . }}</span>
+    {{ end }}
+
+    {{ if $ctx.Params.venue }}
+      <span class="pub-separator"> – </span>
+      <em>{{ $ctx.Params.venue }}</em>
+    {{ end }}
+
+    {{ if $ctx.Params.location }}
+      <span class="pub-separator"> • </span>
+      <span>{{ $ctx.Params.location }}</span>
+    {{ end }}
+  </div>
+
+  {{ with $ctx.Summary }}
+    <div class="pub-summary">{{ . }}</div>
+  {{ end }}
+
+</div>

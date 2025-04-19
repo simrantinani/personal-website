@@ -1,0 +1,10 @@
+<section class="cv-section cv-projects">
+  <h2 class="cv-edu-title"> Selected Projects</h2>
+  <ul>
+    {{ range site.Data.cv.projects }}
+      <li class="cv-l3">
+        <strong>{{ .title }}</strong>{{ with .description }}: {{ . }}{{ end }}
+      </li>
+    {{ end }}
+  </ul>
+</section>

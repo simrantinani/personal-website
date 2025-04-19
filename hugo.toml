@@ -1,0 +1,77 @@
+baseURL = "http://localhost:1313"
+disqusShortname = ""
+enableGitInfo = true
+enableRobotsTXT = true
+hasCJKLanguage = true
+languageCode = "en"
+rssLimit = 10
+theme = "hugo-texify3"
+
+
+[pagination]
+pagerSize = 5
+
+[taxonomies]
+tags = "tags"
+categories = "categories"
+
+[params]
+title="Simran Tinani"
+author = "Simran Tinani"
+description = "Simran Tinani's personal site"
+footnote = """
+Powered by  <a class=link href=https://gohugo.io target=_blank rel=noopener>Hugo</a> |  Customized from the <a class=link href=https://github.com/michaelneuper/hugo-texify3 target=_blank rel=noopener>TeXify3</a>
+theme"""
+# customCSS = ["css/custom.css"]
+customJS = []
+dateFormat = "2 January 2006"
+emphasisWithDots = true
+toc = true
+rootFontSize = "105%"
+math = true
+#enableDuckDuckGoSearchBox = false
+numberedSubtitles = true
+
+[menu]
+
+[[menu.main]]
+  name = "Home"
+  identifier = "home"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 2
+
+
+[[menu.main]]
+  identifier = "writeups"
+  name = "Writeups"
+  url = "/writeups/"
+  weight = 3
+
+[[menu.main]]
+  name = "Research"
+  url = "/research/"
+  identifier = "research"
+  weight = 4
+
+
+[[menu.main]]
+  identifier = "github"
+  name = "GitHub"
+  url = "https://github.com/simrantinani"
+  weight = 6
+
+
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    noClasses = false
+    style = "monokai"  # or "github", "dracula", "vim", etc.
+
