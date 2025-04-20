@@ -7,7 +7,7 @@
     - "Research on post-quantum cryptography, standardization, implementation efforts; authored a comprehensive guide (<u>[to be published soon](https://www.cnlab.ch/)</u>)"
     - Analysis of web applications— architectural soundness, data flow, authentication and authorization mechanisms
     - "Source-code level security audits of smart contracts"
-    - Configuration analysis of configurations of infrastructure components including web servers, reverse proxies, and application firewalls
+    - Configuration analysis of infrastructure components including web servers, reverse proxies, and application firewalls
     - Analysis of vulnerabilities in accordance with CVE's, CVSS
     - "Application of standards and regulations: RFC’s, NIST, BSI, PCI-DSS"
     - "Development of an internal AI strategy concept; demo on basics of LLM prompting at the cnlab 2024 annual conference (<u>[link](https://www.cnlab.ch/fileadmin/documents/Publikationen/2024/cnlab_KI-und-Sicherheit_Prompting_web.pdf)</u>)"

@@ -9,7 +9,7 @@ Hello! My name is Simran, and I'm an IT Security Analyst with a background in ap
 
 ### [Writeups](/writeups/)
 
-A collection of notes structured notes, technical explanations of concepts, and code walkthroughs. Topics vary, but so far include:
+A collection of notes structured notes, technical explanations of concepts, and code walkthroughs. Topics vary, but so far include(formatting of the posts is still immature and work in progress): 
 
 - [Posts on concepts in cryptography](/writeups/#cryptography)  
 - [Some notes from my studies on systems and security](/writeups/#systems-applications-security)  
