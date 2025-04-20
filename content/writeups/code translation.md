@@ -1,7 +1,7 @@
 ---
 title: "Understanding Code Translation: From Source to Machine"
 author: "Simran Tinani"
-date: 2023-02-01
+date: 2025-02-01
 categories: ["Systems, Applications, Security"]
 #tags: ["perceptron", "pocket-algorithm", "linear-classification", "r-programming", "machine-learning", "from-scratch"]
 draft: false

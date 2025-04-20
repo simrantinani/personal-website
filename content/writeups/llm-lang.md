@@ -1,7 +1,7 @@
 ---
 title: "AI and the Next Generation of Language"
 author: "Simran Tinani"
-date: 2023-02-01
+date: 2025-02-01
 categories: ["AI and Machine Learning"]
 #tags: ["perceptron", "pocket-algorithm", "linear-classification", "r-programming", "machine-learning", "from-scratch"]
 draft: false

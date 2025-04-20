@@ -1,7 +1,7 @@
 ---
 title: "Decision Problems — Decidability, Verifiability, and Complexity Classess"
 author: "Simran Tinani"
-date: 2023-02-01
+date: 2025-02-01
 categories: ["Theoretical Computer Science"]
 #tags: ["decidability", "complexity", "np-complete", "p-vs-np"]
 draft: false

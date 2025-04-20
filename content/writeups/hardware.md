@@ -1,7 +1,7 @@
 ---
 title: "Understanding Computer Hardware"
 author: "Simran Tinani"
-date: 2023-02-01
+date: 2024-02-01
 categories: ["Systems, Applications, Security"]
 draft: false
 math: true

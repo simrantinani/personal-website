@@ -1,7 +1,7 @@
 ---
 title: "(Link) Vehicular Counting using Object Detection and Object Tracking"
 author: "Simran Tinani"
-date: 2023-01-01
+date: 2019-01-01
 categories: ["AI and Machine Learning"]
 draft: false
 math: true

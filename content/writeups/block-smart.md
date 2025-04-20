@@ -1,7 +1,7 @@
 ---
 title: "Functional and Security-Related Aspects of Blockchains and Smart Contracts"
 author: "Simran Tinani"
-date: 2023-01-01
+date: 2024-01-01
 categories: ["Cryptography"]
 #tags: ["mathematics", "number theory", "algorithms"]
 draft: false

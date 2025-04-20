@@ -1,7 +1,7 @@
 ---
 title: "Abstract math for anyone: A brief introduction to Groups, their history and applications"
 author: "Simran Tinani"
-date: 2023-01-01
+date: 2020-01-01
 categories: ["Mathematics"]
 #tags: ["Group Theory", "Math", "Symmetry", "Representation Theory"]
 draft: false

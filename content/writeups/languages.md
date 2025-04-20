@@ -1,7 +1,7 @@
 ---
 title: "Understanding the Hierarchy of Computer Languages"
 author: "Simran Tinani"
-date: 2023-02-01
+date: 2024-02-01
 categories: ["Systems, Applications, Security"]
 #tags: ["perceptron", "pocket-algorithm", "linear-classification", "r-programming", "machine-learning", "from-scratch"]
 draft: false

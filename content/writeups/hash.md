@@ -1,7 +1,7 @@
 ---
 title: "What is a cryptographic hash function?"
 author: "Simran Tinani"
-date: 2023-02-01
+date: 2022-02-01
 categories: ["Cryptography"]
 #tags: ["decidability", "complexity", "np-complete", "p-vs-np"]
 draft: false

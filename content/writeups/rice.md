@@ -2,7 +2,7 @@
 ---
 title: "Rice's Theorem"
 author: "Simran Tinani"
-date: 2023-02-01
+date: 2024-02-01
 categories: ["Theoretical Computer Science"]
 draft: false
 math: true

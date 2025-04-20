@@ -1,7 +1,7 @@
 ---
 title: "Minimum Sum Euclidean Decompositions of Integers"
 author: "Simran Tinani"
-date: 2023-01-01
+date: 2019-01-01
 categories: ["Mathematics"]
 #tags: ["mathematics", "number theory", "algorithms"]
 draft: false

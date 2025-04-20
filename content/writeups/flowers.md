@@ -1,7 +1,7 @@
 ---
 title: "Generative AI before it was cool: Experiments with image generation with DCGANs"
 author: "Simran Tinani"
-date: 2023-02-01
+date: 2025-02-01
 categories: ["AI and Machine Learning"]
 #tags: ["gan", "dcgan", "deep-learning", "image-generation", "tensorflow", "mode-collapse"]
 draft: false

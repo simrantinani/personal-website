@@ -1,7 +1,7 @@
 ---
 title: "Explaining Pseudorandomness—Part 2: Stream Ciphers, PRFs, and Block Ciphers"
 author: "Simran Tinani"
-date: 2023-02-01
+date: 2025-02-01
 categories: ["Cryptography"]
 #tags: ["pseudorandomness", "prg", "prf", "stream-cipher", "block-cipher"]
 draft: false
