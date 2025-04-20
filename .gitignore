@@ -1,0 +1,23 @@
+# Hugo output
+/public/
+/resources/
+hugo_stats.json
+
+# Node stuff
+node_modules/
+package-lock.json
+npm-debug.log
+
+# System junk
+.DS_Store
+Thumbs.db
+
+# Backup/temp
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# VSCode or IDE folders
+.vscode/
+.idea/
