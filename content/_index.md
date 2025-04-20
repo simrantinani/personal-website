@@ -11,30 +11,17 @@ Hello! My name is Simran, and I'm an IT Security Analyst with a background in ap
 
 A collection of notes structured notes, technical explanations of concepts, and code walkthroughs. Topics vary, but so far include:
 
-- [posts on concepts in cryptography](/writeups/#cryptography)  
-- [some notes from my studies on systems and security](/writeups/#systems-applications-security)  
-- [occasional notes on AI and machine learning](/writeups/#ai-and-machine-learning)  
-- [fragments of theoretical computer science](/writeups/#theoretical-computer-science)  
-- [two oldish pure mathematics posts](/writeups/#mathematics)  
+- [Posts on concepts in cryptography](/writeups/#cryptography)  
+- [Some notes from my studies on systems and security](/writeups/#systems-applications-security)  
+- [Occasional notes on AI and machine learning](/writeups/#ai-and-machine-learning)  
+- [Fragments of theoretical computer science](/writeups/#theoretical-computer-science)  
+- [Two oldish pure mathematics posts](/writeups/#mathematics)  
 
 ### [Research](/research/)
 
 A record of my academic work, including research in mathematical cryptography during my doctoral studies.
 
 
-### [Resume](/cv/)
-
-An outline of my academic and professional background.
-
-
 ### [About](/about/)
 
 A bit more about me and this website.
-
-
-
-
-
-
-
-

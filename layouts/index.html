@@ -2,8 +2,20 @@
 <main id="main" class="home">
   <section class="home-section-card">
     <div class="home-content">
-      <!-- Render the content from index.md here -->
-      {{ .Content | markdownify }}  <!-- This is where your markdown content from index.md will be rendered as HTML -->
+      {{ .Content | markdownify }}
+      <!-- Contact Section: full heading and links, styled together -->
+      <h3>Contact</h3>
+      <div class="icon-links vertical">
+        <a href="https://www.cnlab.ch/en/about-us/dr-simran-tinani" target="_blank" rel="noopener">
+          <i class="fas fa-building"></i> <u>Workplace homepage</u>
+        </a>
+        <a href="https://github.com/simrantinani" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i> <u>GitHub</u>
+        </a>
+        <a href="https://linkedin.com/in/simrantinani" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i> <u>LinkedIn</u>
+        </a>
+      </div>
     </div>
   </section>
 </main>

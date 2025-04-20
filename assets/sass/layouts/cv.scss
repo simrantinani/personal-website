@@ -56,6 +56,10 @@
   max-width: 14900px;
   margin: 0;
   margin-left: -4rem;
+  margin-right: -4rem;
+  line-height: 1.4;
+  margin-top: -1.5rem;
+
   padding: 0.2rem 0;
   font-family: "Georgia", serif;
 }
@@ -162,7 +166,7 @@
   font-size: 0.85rem;
   font-weight: 400;
   color: #2e2e2e;
-  line-height: 1.27;
+  line-height: 1.4;
 }
 
 .cv-l3 li {
@@ -341,6 +345,8 @@ fieldset {
 @media print {
   .cv-grid {
     grid-template-columns: 150px 1fr;
+    margin-top: -3rem;
+
   }
 }
 @media print {
@@ -393,7 +399,7 @@ fieldset {
   }
 
   .cv-main h2 {
-    font-size: 12pt;
+    font-size: 12.5pt;
   }
 
   .cv h3 {

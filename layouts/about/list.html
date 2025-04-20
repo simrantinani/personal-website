@@ -2,7 +2,21 @@
 <main id="main" class="about">
   <section class="about-section-card">
     <div class="about-content">
-        {{ .Content |  markdownify }}
+      {{ .Content | markdownify }}
+      <!-- Contact Section: full heading and links, styled together -->
+      <h3>Contact</h3>
+      <!-- Enhanced Contact Icons, each on its own line -->
+      <div class="icon-links vertical">
+        <a href="https://www.cnlab.ch/en/about-us/dr-simran-tinani" target="_blank" rel="noopener">
+          <i class="fas fa-building"></i> <u>Workplace homepage </u>
+        </a>
+        <a href="https://github.com/simrantinani" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i> <u>GitHub</u>
+        </a>
+        <a href="https://linkedin.com/in/simrantinani" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i> <u>LinkedIn</u>
+        </a>
+      </div>
     </div>
   </section>
 </main>
