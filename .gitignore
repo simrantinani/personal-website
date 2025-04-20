@@ -8,8 +8,6 @@ hugo_stats.json
 /package-lock.json
 npm-debug.log
 
-# Theme submodule (don't track theme changes if not editing)
-themes/hugo-texify3/*
 
 # Personal folders (e.g. previously used "save")
 /save/
