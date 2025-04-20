@@ -7,6 +7,7 @@ categories: ["Systems, Applications, Security"]
 draft: false
 math: true
 noNumbering: false
+weight: 1
 summary: "An exploration of how code is translated from high-level languages into machine-readable instructions through compilation, assembly, and linking."
 ---
 
