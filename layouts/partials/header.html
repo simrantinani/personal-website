@@ -2,7 +2,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="..." crossorigin="anonymous">
 
   <div class="signature">Simran Tinani</div>
+  <!-- Hamburger (mobile toggle) -->
+  <button class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </button>
 
+  <!-- Menu logic (your existing nav logic) -->
   {{ $currentPage := . }}
   {{ $menuItems := .Site.Menus.main }}
   {{ $activeIndex := -1 }}
@@ -31,7 +36,7 @@
     {{ $leftItems := first $half $otherItems }}
     {{ $rightItems := after $half $otherItems }}
 
-    <nav class="navbar">
+    <nav id="main-nav" class="navbar">
       <div class="nav-left">
         {{ range $leftItems }}
           <a href="{{ .URL }}">{{ .Name }}</a>
@@ -51,7 +56,7 @@
 
   {{ else }}
     <!-- fallback if nothing is active -->
-    <nav class="navbar">
+    <nav id="main-nav" class="navbar">
       <div class="nav-left">
         {{ range $menuItems }}
           <a href="{{ .URL }}">{{ .Name }}</a>
@@ -61,4 +66,10 @@
       <div class="nav-right"></div>
     </nav>
   {{ end }}
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('main-nav');
+      nav.classList.toggle('show');
+    }
+  </script>
 </header>
