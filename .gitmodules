@@ -4,6 +4,3 @@
 [submodule "themes/eureka"]
 	path = themes/eureka
 	url = https://github.com/wangchucheng/hugo-eureka.git
-[submodule "themes/hugo-texify3"]
-	path = themes/hugo-texify3
-	url = https://github.com/michaelneuper/hugo-texify3.git
