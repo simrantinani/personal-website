@@ -8,6 +8,8 @@ draft: false
 math: true
 noNumbering: true
 summary: "A breakdown of the hierarchy of programming languages, and of the roles of source code, bytecode, assembly, object files, and executables."
+weight: 2
+
 ---
 
 

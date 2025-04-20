@@ -7,6 +7,8 @@ categories: ["Systems, Applications, Security"]
 draft: false
 math: true
 summary: "A study of how computers store and access information, exploring the types and hierarchy of memory systems."
+weight: 3
+
 ---
 
 
