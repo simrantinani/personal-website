@@ -1,7 +1,8 @@
 
 skills:
   - name: "Python"
-    description: "Several years of experience: machine learning, computer vision, cryptographic utilities, backend systems development"
+    description: "Several years of experience: machine learning, computer vision, cryptographic utilities, backend systems development, scripts to support internal workflows
+"
 
   - name: "SageMath"
     description: "Conducting experiments and verifying theoretical results in cryptography research"
@@ -16,14 +17,10 @@ skills:
     description: "Basic proficiency"
 
   - name: "R"
-    description: "Intermediate proficiency. Data analysis, forecasting, visualization, machine learning algorithms"
+    description: "Intermediate proficiency. Data analysis, forecasting, machine learning algorithms"
 
   - name: "LaTeX, Office (Excel, Word, PowerPoint)"
     description: "Scientific documentation, writing papers, and preparing presentations"
 
-
-  - name: "Hugo"
-    description: "Static site generator for building personal website and resume."
-
-  - name: "HTML, CSS"
-    description: "Working proficiency. Used in building static site with Hugo."
+  - name: "Static website programming—Hugo, HTML, CSS"
+    description: "Working proficiency. Used for building personal website and resume."

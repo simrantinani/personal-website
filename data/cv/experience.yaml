@@ -2,15 +2,16 @@
   company: "cnlab security AG"
   period: "Sep’23 – Present"
   highlights:
-    - Design, planning, coordination, documentation of security reviews
-    - "Conceptual and practical aspects of security protocols and cryptographic primitives integrated in IT systems"
-    - "Research on post-quantum cryptography, standardization, implementation efforts; authored a comprehensive guide (<u>[Link](https://www.cnlab.ch/fileadmin/documents/Publikationen/2025/Post-Quantum_Cryptography_-__A_Comprehensive_Guide.pdf)</u>)"
-    - Analysis of web applications— architectural soundness, data flow, authentication and authorization mechanisms
-    - "Source-code level security audits of smart contracts"
-    - Configuration analysis of infrastructure components including web servers, reverse proxies, and application firewalls
+    - Design, planning, coordination, and documentation of security reviews
+    - Conceptual and practical aspects of security protocols and cryptographic primitives integrated in IT systems
+    - Analysis of cryptographic implementations in application code—correctness, misuse detection, and adherence to current standards
+    - Research on post-quantum cryptography, standardization, implementation efforts; authored a comprehensive guide (<u>[Link](https://www.cnlab.ch/fileadmin/documents/Publikationen/2025/Post-Quantum_Cryptography_-__A_Comprehensive_Guide.pdf)</u>)
+    - Analysis of web applications—architectural soundness, data flow, authentication and authorization mechanisms
+    - In-depth source-code audits for smart contract vulnerabilities and logical flaws 
+    - Configuration analysis of infrastructure components like web servers and reverse proxies
     - Analysis of vulnerabilities in accordance with CVE's, CVSS
-    - "Application of standards and regulations: RFC’s, NIST, BSI, PCI-DSS"
-    - "Development of an internal AI strategy concept; demo on basics of LLM prompting at the cnlab 2024 annual conference (<u>[Link](https://www.cnlab.ch/fileadmin/documents/Publikationen/2024/cnlab_KI-und-Sicherheit_Prompting_web.pdf)</u>)"
+    - "Application of standards and regulations: RFCs, NIST, BSI, PCI-DSS"
+    - Development of an internal AI strategy concept; demo on basics of LLM prompting at the cnlab 2024 annual conference (<u>[Link](https://www.cnlab.ch/fileadmin/documents/Publikationen/2024/cnlab_KI-und-Sicherheit_Prompting_web.pdf)</u>)
 
 - role: "PhD Student and Teaching Assistant"
   company: "University of Zürich"
@@ -29,6 +30,6 @@
   company: "Hashbrown Systems, India"
   period: "Aug’18 – Jun’19"
   highlights:
-    - "Developed a deep learning object detection and tracking model for counting vehicles in a live video feed (<u>[Link to White Paper](https://hashbrown.com/blog/ooh/vehicular-counting-using-object-detection-and-object-tracking)</u>)"
+    - Developed a deep learning object detection and tracking model for counting vehicles in a live video feed (<u>[Link to White Paper](https://hashbrown.com/blog/ooh/vehicular-counting-using-object-detection-and-object-tracking)</u>)
     - "Developed a model for estimation of advertisement views based on demographic distribution, recalibratable with real data."
     - "Analyzed stock price trends and developed automated trading models."
