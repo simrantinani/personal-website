@@ -6,7 +6,7 @@ draft: false
 
 Hello! My name is Simran, and I'm an IT Security Analyst with a background in applied mathematics and cryptography. I spend some of my free time learning core security concepts and trying to better understand the workings of systems, software, and the web. This website is a small space to gather notes and articles from my personal projects and study, and to document my existing research work. 
 
-One recent project is ***[Nutshell Cryptography](https://nutshellcryptography.pages.dev/)***  – an interactive tool that simplifies cryptographic concepts through structured categorization and visualization. Built with React and Vite, it represents my first steps into learning JavaScript and reflects a commitment to making complex ideas more accessible. The project is still a work in progress, and parts of it remain incomplete or experimental.
+One recent project is ***[Nutshell Cryptography](https://nutshellcryptography.pages.dev/)***  – an interactive tool that simplifies cryptographic concepts through structured categorization and visualization. Built with React and Vite, it represents my first steps into learning JavaScript and a personal goal to make complex ideas more accessible. The project is still a work in progress, and parts of it remain incomplete or experimental.
 
 This website brings together a few main threads:
 
