@@ -8,10 +8,15 @@ Hello! My name is Simran, and I'm an IT Security Analyst with a background in ap
 
 One recent project is ***[Nutshell Cryptography](https://nutshellcryptography.pages.dev/)***  – an interactive tool that simplifies cryptographic concepts through structured categorization and visualization. It is a first exercise in JavaScript, built with React and Vite, and reflects a personal goal to make complex ideas more accessible. The project is still a work in progress, and parts of it remain incomplete or experimental.
 
+
 This website brings together a few main threads:
 
 ### [Writeups](/writeups/)
-A collection of notes structured notes, technical explanations of concepts, and code walkthroughs. A few may be links to external websites, when the work was done in professional capacity. Topics vary, but so far include (formatting of the posts is still immature and work in progress): 
+A collection of notes structured notes, technical explanations of concepts, and code walkthroughs. A few may be links to external websites, when the work was done in professional capacity. 
+
+**Latest post:** [Compilation, Interpretation, and Typing](/writeups/plbasics/)
+
+Topics vary, but so far include (formatting of the posts is still immature and work in progress): 
 
 - [Posts on cryptography](/writeups/#cryptography)
  

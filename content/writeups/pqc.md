@@ -1,7 +1,7 @@
 ---
 title: "(Link) Post-Quantum Cryptography: A Comprehensive Guide"
 author: "Simran Tinani"
-date: 2019-01-01
+date: 2025-05-01
 categories: ["Cryptography"]
 draft: false
 math: true
